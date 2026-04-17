@@ -61,6 +61,14 @@
       100% { transform: translateY(4000%); }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
     /* NAV */
     nav {
       position: fixed;
@@ -554,7 +562,8 @@
       transition: background 0.2s, color 0.2s;
       cursor: pointer;
     }
-    .org-cell:hover { background: var(--blue); color: #fff; }
+    .org-cell:hover,
+    .org-cell:focus-visible { background: var(--blue); color: #fff; outline: 3px solid var(--blue-bright); outline-offset: -3px; }
     .org-cell .org-logo {
       height: 26px;
       width: auto;
@@ -583,8 +592,10 @@
       width: 32px;
       max-width: 32px;
     }
-    .org-cell:hover .org-logo { opacity: 0; }
-    .org-cell:hover .org-name { opacity: 1; }
+    .org-cell:hover .org-logo,
+    .org-cell:focus-visible .org-logo { opacity: 0; }
+    .org-cell:hover .org-name,
+    .org-cell:focus-visible .org-name { opacity: 1; }
     .org-more {
       color: var(--muted);
       font-style: italic;
@@ -946,59 +957,59 @@
     <h2 class="big">Organizations represented</h2>
     <div class="org-grid">
       <a href="https://www.nsa.gov" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=nsa.gov&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=nsa.gov&sz=128" class="org-logo org-favicon" alt="NSA logo" />
         <span class="org-name">NSA</span>
       </a>
       <a href="https://www.cisa.gov" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=cisa.gov&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=cisa.gov&sz=128" class="org-logo org-favicon" alt="CISA logo" />
         <span class="org-name">CISA</span>
       </a>
       <a href="https://anthropic.com" class="org-cell">
-        <img src="https://cdn.simpleicons.org/anthropic" class="org-logo" alt="" />
+        <img src="https://cdn.simpleicons.org/anthropic" class="org-logo" alt="Anthropic logo" />
         <span class="org-name">Anthropic</span>
       </a>
       <a href="https://google.com" class="org-cell">
-        <img src="https://cdn.simpleicons.org/google" class="org-logo" alt="" />
+        <img src="https://cdn.simpleicons.org/google" class="org-logo" alt="Google logo" />
         <span class="org-name">Google</span>
       </a>
       <a href="https://palisaderesearch.org" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=palisaderesearch.org&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=palisaderesearch.org&sz=128" class="org-logo org-favicon" alt="Palisade Research logo" />
         <span class="org-name">Palisade</span>
       </a>
       <a href="https://www.rand.org" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=rand.org&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=rand.org&sz=128" class="org-logo org-favicon" alt="RAND Corporation logo" />
         <span class="org-name">RAND</span>
       </a>
       <a href="https://openai.com" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" class="org-logo org-favicon" alt="OpenAI logo" />
         <span class="org-name">OpenAI</span>
       </a>
       <a href="https://wiz.io" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=wiz.io&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=wiz.io&sz=128" class="org-logo org-favicon" alt="Wiz logo" />
         <span class="org-name">Wiz</span>
       </a>
       <a href="https://meta.com" class="org-cell">
-        <img src="https://cdn.simpleicons.org/meta" class="org-logo" alt="" />
+        <img src="https://cdn.simpleicons.org/meta" class="org-logo" alt="Meta logo" />
         <span class="org-name">Meta</span>
       </a>
       <a href="https://www.defense.gov" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=defense.gov&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=defense.gov&sz=128" class="org-logo org-favicon" alt="U.S. Department of Defense logo" />
         <span class="org-name">DoD</span>
       </a>
       <a href="https://crowdstrike.com" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=crowdstrike.com&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=crowdstrike.com&sz=128" class="org-logo org-favicon" alt="CrowdStrike logo" />
         <span class="org-name">CrowdStrike</span>
       </a>
       <a href="https://nvidia.com" class="org-cell">
-        <img src="https://cdn.simpleicons.org/nvidia" class="org-logo" alt="" />
+        <img src="https://cdn.simpleicons.org/nvidia" class="org-logo" alt="NVIDIA logo" />
         <span class="org-name">NVIDIA</span>
       </a>
       <a href="https://paloaltonetworks.com" class="org-cell">
-        <img src="https://cdn.simpleicons.org/paloaltonetworks" class="org-logo" alt="" />
+        <img src="https://cdn.simpleicons.org/paloaltonetworks" class="org-logo" alt="Palo Alto Networks logo" />
         <span class="org-name">Palo Alto</span>
       </a>
       <a href="https://trailofbits.com" class="org-cell">
-        <img src="https://www.google.com/s2/favicons?domain=trailofbits.com&sz=128" class="org-logo org-favicon" alt="" />
+        <img src="https://www.google.com/s2/favicons?domain=trailofbits.com&sz=128" class="org-logo org-favicon" alt="Trail of Bits logo" />
         <span class="org-name">Trail of Bits</span>
       </a>
       <div class="org-cell org-more" style="grid-column: span 2;">+ more</div>
