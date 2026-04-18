@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VASF 2026 — Vegas AI Security Forum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- BOOT SCREEN -->
+<div id="boot-screen">
+  <div id="boot-inner">
+    <div id="boot-log"></div>
+    <div id="cursor-line">
+      <span id="boot-prompt">$ </span><span id="boot-cursor">█</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="site" class="hidden">
+
+  <!-- TMUX STATUS BAR TOP -->
+  <div class="tmux-bar top">
+    <div class="tmux-bar-left">
+      <span class="tmux-session">[vasf-2026]</span>
+      <span class="tmux-win active-win">0:main</span>
+      <span class="tmux-win">1:sessions</span>
+      <span class="tmux-win">2:speakers</span>
+      <span class="tmux-win">3:venue</span>
+    </div>
+    <div class="tmux-bar-right">
+      <span class="tmux-info">LAS VEGAS · AUG 14–16 2026</span>
+      <span class="tmux-clock" id="tmux-clock"></span>
+    </div>
+  </div>
+
+  <!-- LAYOUT GRID -->
+  <div class="pane-grid">
+
+    <!-- PANE: HERO -->
+    <div class="pane pane-hero" id="pane-hero">
+      <div class="pane-title-bar">
+        <span class="pane-label">~/vasf/welcome</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body hero-body">
+        <div class="hero-ascii">
+<pre class="ascii-art">
+██╗   ██╗ █████╗ ███████╗███████╗
+██║   ██║██╔══██╗██╔════╝██╔════╝
+██║   ██║███████║███████╗█████╗
+╚██╗ ██╔╝██╔══██║╚════██║██╔══╝
+ ╚████╔╝ ██║  ██║███████║██║
+  ╚═══╝  ╚═╝  ╚═╝╚══════╝╚═╝
+</pre>
+<pre class="ascii-sub">AI SECURITY FORUM · LAS VEGAS · 2026</pre>
+        </div>
+        <div class="hero-prompt">
+          <p class="prompt-line"><span class="prompt-sym">❯</span> <span class="typed-text" data-text="Adversarial ML. Red teaming. Model security."></span><span class="blink-cursor">▋</span></p>
+          <p class="hero-desc">Three days. Seventy researchers. Zero corporate BS.<br/>The most technical AI security event in the desert.</p>
+          <div class="hero-actions">
+            <a href="#apply" class="btn-terminal">./apply --now</a>
+            <a href="#sessions" class="btn-ghost">cat sessions.md</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: LIVE STATS -->
+    <div class="pane pane-stats" id="pane-stats">
+      <div class="pane-title-bar">
+        <span class="pane-label">htop — vasf-stats</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body stats-body">
+        <div class="stat-row">
+          <span class="stat-label">ATTENDEES</span>
+          <span class="stat-bar"><span class="stat-fill" style="width:82%"></span></span>
+          <span class="stat-val">~70</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SESSIONS </span>
+          <span class="stat-bar"><span class="stat-fill" style="width:60%"></span></span>
+          <span class="stat-val">24</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ORGS     </span>
+          <span class="stat-bar"><span class="stat-fill" style="width:70%"></span></span>
+          <span class="stat-val">35+</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">DAYS     </span>
+          <span class="stat-bar"><span class="stat-fill" style="width:100%"></span></span>
+          <span class="stat-val">3</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-tags">
+          <span class="tag">adversarial-ml</span>
+          <span class="tag">red-teaming</span>
+          <span class="tag">jailbreaks</span>
+          <span class="tag">alignment</span>
+          <span class="tag">agentic-systems</span>
+          <span class="tag">model-exfil</span>
+          <span class="tag">evals</span>
+          <span class="tag">supply-chain</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: THEME -->
+    <div class="pane pane-theme" id="pane-theme">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat theme.md</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body theme-body">
+        <p class="comment"># 2026 Theme: Trust No Model</p>
+        <p class="theme-text">AI systems are now infrastructure. They route decisions, sign code, manage agents, and increasingly <span class="hl">act autonomously</span>. The attack surface has never been larger — and most defenders haven't caught up.</p>
+        <p class="theme-text">VASF 2026 brings together the researchers who are <span class="hl">actively breaking and hardening</span> these systems: red teamers at frontier labs, academic adversarial ML researchers, government threat analysts, and independent security engineers.</p>
+        <p class="comment"># Format</p>
+        <ul class="theme-list">
+          <li><span class="bullet">→</span> Invitation-only, capped at 70 attendees</li>
+          <li><span class="bullet">→</span> Chatham House rules by default</li>
+          <li><span class="bullet">→</span> Technical depth over marketing fluff</li>
+          <li><span class="bullet">→</span> Evening CTF: live red team exercises</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PANE: SESSIONS -->
+    <div class="pane pane-sessions full-width" id="sessions">
+      <div class="pane-title-bar">
+        <span class="pane-label">ls -la sessions/</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body sessions-body">
+        <div class="sessions-grid">
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">09:00</span><span class="session-type keynote">keynote</span></div>
+            <h3 class="session-title">Agentic Systems Are the New Supply Chain</h3>
+            <p class="session-desc">How tool-calling agents introduce novel injection and privilege escalation vectors that traditional AppSec tooling completely misses.</p>
+            <span class="session-speaker">@redacted</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">11:00</span><span class="session-type workshop">workshop</span></div>
+            <h3 class="session-title">Prompt Injection at Scale: Automated Discovery</h3>
+            <p class="session-desc">Hands-on: building fuzzers for LLM instruction hierarchies. Bring a laptop. We'll attack three deployed systems.</p>
+            <span class="session-speaker">Maya R. · Independent Researcher</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">14:00</span><span class="session-type talk">talk</span></div>
+            <h3 class="session-title">Model Weight Exfiltration: Threat Modeling</h3>
+            <p class="session-desc">What does it actually take to steal a frontier model? Practical threat modeling for labs and cloud providers.</p>
+            <span class="session-speaker">Frontier Lab Red Team (Anon)</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">09:00</span><span class="session-type keynote">keynote</span></div>
+            <h3 class="session-title">Evals as a Security Primitive</h3>
+            <p class="session-desc">Why eval suites are the closest thing we have to unit tests for alignment, and how adversaries are already gaming them.</p>
+            <span class="session-speaker">Dr. Kenji T. · MATS</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">11:00</span><span class="session-type panel">panel</span></div>
+            <h3 class="session-title">Responsible Disclosure for AI Vulns</h3>
+            <p class="session-desc">The CVE model doesn't map cleanly onto model behavior. How do we build norms for reporting jailbreaks, emergent capabilities, and misuse vectors?</p>
+            <span class="session-speaker">Panel · 4 speakers</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">14:00</span><span class="session-type workshop">workshop</span></div>
+            <h3 class="session-title">Multimodal Attack Surfaces</h3>
+            <p class="session-desc">Vision models, audio injection, document poisoning. Practical demos of cross-modal attacks against deployed systems.</p>
+            <span class="session-speaker">Sara K. · Academic (CMU)</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 3</span><span class="session-time">09:00</span><span class="session-type talk">talk</span></div>
+            <h3 class="session-title">Red Teaming Government AI: Lessons from NIST</h3>
+            <p class="session-desc">What happens when federal agencies deploy LLMs for sensitive workflows? Field notes from two years of government red teaming engagements.</p>
+            <span class="session-speaker">Gov Red Team (Anon)</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">DAY 3</span><span class="session-time">11:00</span><span class="session-type ctf">ctf</span></div>
+            <h3 class="session-title">CTF Finals: BREAKMODEL</h3>
+            <p class="session-desc">The two-day capture-the-flag wraps up. Live scoring. Teams will have been attacking a sandboxed agentic deployment since Day 1 evening.</p>
+            <span class="session-speaker">All attendees</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: PAST PARTICIPANTS -->
+    <div class="pane pane-participants" id="speakers">
+      <div class="pane-title-bar">
+        <span class="pane-label">git log --format="%an" participants/</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body participants-body">
+        <p class="comment"># past attendees include people from</p>
+        <div class="orgs-grid">
+          <span class="org">Anthropic</span>
+          <span class="org">OpenAI</span>
+          <span class="org">DeepMind</span>
+          <span class="org">CISA</span>
+          <span class="org">DARPA</span>
+          <span class="org">NSA/CSS</span>
+          <span class="org">MIT CSAIL</span>
+          <span class="org">CMU CyLab</span>
+          <span class="org">Stanford HAI</span>
+          <span class="org">EleutherAI</span>
+          <span class="org">Scale AI</span>
+          <span class="org">Palantir</span>
+          <span class="org">Dragos</span>
+          <span class="org">Mandiant</span>
+          <span class="org">RAND Corp</span>
+          <span class="org">CrowdStrike</span>
+        </div>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="t-text">"The only AI security event where talks are actually technical. No vendor pitches. Just researchers hacking things."</p>
+            <span class="t-attr">— ML Safety Researcher, Frontier Lab</span>
+          </div>
+          <div class="testimonial">
+            <p class="t-text">"I learned more in 3 days at VASF than in 6 months of reading papers."</p>
+            <span class="t-attr">— Red Team Lead, Major Tech Co.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: VENUE -->
+    <div class="pane pane-venue" id="venue">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat venue.conf</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body venue-body">
+        <div class="venue-line"><span class="vkey">location</span><span class="vsep">=</span><span class="vval">The Venetian Resort, Las Vegas, NV</span></div>
+        <div class="venue-line"><span class="vkey">dates   </span><span class="vsep">=</span><span class="vval">Aug 14 – 16, 2026</span></div>
+        <div class="venue-line"><span class="vkey">capacity</span><span class="vsep">=</span><span class="vval">70 (hard cap, invitation only)</span></div>
+        <div class="venue-line"><span class="vkey">overlap </span><span class="vsep">=</span><span class="vval">DEF CON week (Aug 8–11) + recovery window</span></div>
+        <div class="venue-line"><span class="vkey">network </span><span class="vsep">=</span><span class="vval">Isolated VLAN, no logging (you're welcome)</span></div>
+        <div class="venue-line"><span class="vkey">catering</span><span class="vsep">=</span><span class="vval">Full. We feed you. Focus on the work.</span></div>
+        <div class="venue-note"><span class="prompt-sym">!</span> VASF runs the week after DEF CON. Many attendees stay in Vegas. We handle housing coordination upon acceptance.</div>
+      </div>
+    </div>
+
+    <!-- PANE: APPLY -->
+    <div class="pane pane-apply full-width" id="apply">
+      <div class="pane-title-bar">
+        <span class="pane-label">./apply.sh</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body apply-body">
+        <div class="apply-intro">
+          <p class="comment"># Applications open. Rolling admissions. ~30 spots remain.</p>
+          <p class="apply-text">We read every application. We're looking for people who are <span class="hl">actively doing the work</span>: researchers, red teamers, builders, and policy people who go deep on technical details. Your GitHub matters more than your title.</p>
+        </div>
+        <form class="apply-form" id="apply-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label">handle / name</label>
+              <input type="text" class="form-input" placeholder="@handle or Full Name" />
+            </div>
+            <div class="form-field">
+              <label class="form-label">email</label>
+              <input type="email" class="form-input" placeholder="you@domain.tld" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">affiliation (optional)</label>
+            <input type="text" class="form-input" placeholder="org, lab, independent..." />
+          </div>
+          <div class="form-field">
+            <label class="form-label">what are you working on? (2–4 sentences)</label>
+            <textarea class="form-input form-textarea" rows="4" placeholder="Tell us what you're actually hacking on..."></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">links (github, papers, writeups)</label>
+            <input type="text" class="form-input" placeholder="https://..." />
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-terminal">./submit --application</button>
+            <span class="form-note">We respond within 5 business days.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div><!-- /pane-grid -->
+
+  <!-- TMUX STATUS BAR BOTTOM -->
+  <div class="tmux-bar bottom">
+    <div class="tmux-bar-left">
+      <span class="tmux-mode">[NORMAL]</span>
+      <span class="tmux-path">~/vasf/2026</span>
+    </div>
+    <div class="tmux-bar-right">
+      <span class="tmux-info">vasf@vegas · questions: <a href="mailto:hello@vasf.io" class="bar-link">hello@vasf.io</a></span>
+    </div>
+  </div>
+
+</div><!-- /site -->
+
+<script src="main.js"></script>
+</body>
+</html>

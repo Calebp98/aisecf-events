@@ -1,0 +1,478 @@
+/* ============================================================
+   VEGAS AI SECURITY FORUM — Terminal/tmux aesthetic
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d0d0d;
+  --bg-pane:   #111111;
+  --bg-bar:    #1a1a1a;
+  --bg-card:   #161616;
+  --border:    #2a2a2a;
+  --border-hi: #3d3d3d;
+
+  --green:   #00ff87;
+  --green-d: #00cc6a;
+  --amber:   #ffb300;
+  --red:     #ff4757;
+  --blue:    #4ecdc4;
+  --purple:  #c084fc;
+  --dim:     #555555;
+  --muted:   #777777;
+  --text:    #d4d4d4;
+  --text-hi: #ffffff;
+
+  --font: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  --bar-h: 26px;
+  --pane-title-h: 28px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   BOOT SCREEN
+   ============================================================ */
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px 28px;
+  transition: opacity 0.5s ease;
+}
+#boot-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#boot-inner {
+  width: 100%;
+  max-width: 680px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--green);
+}
+
+#boot-log { line-height: 1.7; }
+#boot-log .log-line { display: block; }
+#boot-log .log-ok   { color: var(--green); }
+#boot-log .log-info { color: var(--blue); }
+#boot-log .log-warn { color: var(--amber); }
+#boot-log .log-dim  { color: var(--dim); }
+
+#cursor-line {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--green);
+}
+#boot-cursor {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   SITE VISIBILITY
+   ============================================================ */
+#site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+#site.visible { opacity: 1; }
+.hidden { display: none !important; }
+
+/* ============================================================
+   TMUX STATUS BARS
+   ============================================================ */
+.tmux-bar {
+  height: var(--bar-h);
+  background: var(--bg-bar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 11px;
+  flex-shrink: 0;
+  position: sticky;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.tmux-bar.top  { top: 0; border-bottom: 1px solid var(--border); }
+.tmux-bar.bottom { bottom: 0; border-top: 1px solid var(--border); position: fixed; width: 100%; }
+
+.tmux-bar-left, .tmux-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.tmux-session { color: var(--green); font-weight: 700; margin-right: 4px; }
+.tmux-win { color: var(--muted); padding: 0 6px; }
+.tmux-win.active-win { color: var(--text-hi); background: #2a2a2a; }
+.tmux-info { color: var(--muted); white-space: nowrap; }
+.tmux-clock { color: var(--amber); font-weight: 500; }
+.tmux-mode { color: var(--green); font-weight: 700; background: #002a15; padding: 0 6px; }
+.tmux-path { color: var(--blue); }
+.bar-link { color: var(--muted); text-decoration: none; }
+.bar-link:hover { color: var(--green); }
+
+/* ============================================================
+   PANE GRID LAYOUT
+   ============================================================ */
+.pane-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: auto;
+  gap: 1px;
+  background: var(--border);
+  flex: 1;
+  padding-bottom: var(--bar-h);
+}
+
+/* Pane row assignments */
+#pane-hero       { grid-column: 1; grid-row: 1; }
+#pane-stats      { grid-column: 2; grid-row: 1 / 3; }
+#pane-theme      { grid-column: 1; grid-row: 2; }
+#pane-sessions   { grid-column: 1 / -1; grid-row: 3; }
+#pane-participants { grid-column: 1; grid-row: 4; }
+#pane-venue      { grid-column: 2; grid-row: 4; }
+#pane-apply      { grid-column: 1 / -1; grid-row: 5; }
+
+/* ============================================================
+   PANE BASE STYLES
+   ============================================================ */
+.pane {
+  background: var(--bg-pane);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pane-title-bar {
+  height: var(--pane-title-h);
+  background: var(--bg-bar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pane-label { color: var(--muted); font-size: 11px; }
+.pane-controls { display: flex; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red    { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green  { background: #28c840; }
+
+.pane-body { padding: 20px; overflow: auto; flex: 1; }
+
+/* ============================================================
+   HERO PANE
+   ============================================================ */
+.hero-body { display: flex; flex-direction: column; gap: 20px; }
+
+.ascii-art {
+  color: var(--green);
+  font-size: clamp(7px, 1.5vw, 13px);
+  line-height: 1.2;
+  white-space: pre;
+  overflow: hidden;
+}
+.ascii-sub {
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+}
+
+.prompt-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.prompt-sym { color: var(--green); }
+.typed-text { color: var(--text-hi); }
+.blink-cursor {
+  color: var(--green);
+  animation: blink 1s step-end infinite;
+}
+
+.hero-desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn-terminal {
+  display: inline-block;
+  background: var(--green);
+  color: #000;
+  padding: 8px 16px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-terminal:hover { background: var(--green-d); }
+
+.btn-ghost {
+  display: inline-block;
+  border: 1px solid var(--border-hi);
+  color: var(--text);
+  padding: 8px 16px;
+  font-family: var(--font);
+  font-size: 12px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+/* ============================================================
+   STATS PANE (htop style)
+   ============================================================ */
+.stats-body { display: flex; flex-direction: column; gap: 10px; }
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+.stat-label { color: var(--blue); white-space: nowrap; min-width: 60px; }
+.stat-bar {
+  flex: 1;
+  height: 10px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  overflow: hidden;
+}
+.stat-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  animation: bar-load 1.2s ease forwards;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+@keyframes bar-load { to { transform: scaleX(1); } }
+.stat-val { color: var(--green); font-weight: 700; min-width: 28px; text-align: right; }
+
+.stat-divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+.stat-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.tag {
+  font-size: 9px;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: #151515;
+  letter-spacing: 0.05em;
+}
+.tag:hover { border-color: var(--green); color: var(--green); cursor: default; }
+
+/* ============================================================
+   THEME PANE
+   ============================================================ */
+.theme-body { display: flex; flex-direction: column; gap: 12px; }
+.comment { color: var(--dim); font-size: 11px; }
+.theme-text { color: var(--text); line-height: 1.7; font-size: 13px; }
+.hl { color: var(--green); }
+
+.theme-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.theme-list li { display: flex; gap: 10px; color: var(--text); font-size: 12px; }
+.bullet { color: var(--green); }
+
+/* ============================================================
+   SESSIONS PANE
+   ============================================================ */
+.sessions-body { padding: 16px 20px; }
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.session-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s;
+}
+.session-card:hover { border-color: var(--border-hi); }
+
+.session-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.session-day  { color: var(--dim); font-size: 10px; }
+.session-time { color: var(--amber); font-size: 10px; font-weight: 700; }
+
+.session-type {
+  font-size: 9px;
+  padding: 2px 6px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.session-type.keynote  { background: #001a0d; color: var(--green); border: 1px solid var(--green-d); }
+.session-type.talk     { background: #1a1000; color: var(--amber); border: 1px solid #664400; }
+.session-type.workshop { background: #0a0a1a; color: var(--blue); border: 1px solid #224466; }
+.session-type.panel    { background: #1a001a; color: var(--purple); border: 1px solid #4a1a6a; }
+.session-type.ctf      { background: #1a0000; color: var(--red); border: 1px solid #660000; }
+
+.session-title { color: var(--text-hi); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.session-desc  { color: var(--muted); font-size: 11px; line-height: 1.6; flex: 1; }
+.session-speaker { color: var(--dim); font-size: 10px; margin-top: auto; }
+
+/* ============================================================
+   PARTICIPANTS PANE
+   ============================================================ */
+.participants-body { display: flex; flex-direction: column; gap: 16px; }
+
+.orgs-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.org {
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--bg-card);
+}
+.org:hover { border-color: var(--green); color: var(--green); cursor: default; }
+
+.testimonials { display: flex; flex-direction: column; gap: 12px; }
+.testimonial { border-left: 2px solid var(--border-hi); padding-left: 12px; }
+.t-text { color: var(--text); font-size: 12px; line-height: 1.7; font-style: italic; }
+.t-attr { color: var(--dim); font-size: 10px; display: block; margin-top: 4px; }
+
+/* ============================================================
+   VENUE PANE
+   ============================================================ */
+.venue-body { display: flex; flex-direction: column; gap: 8px; }
+.venue-line { display: flex; gap: 4px; font-size: 12px; align-items: baseline; }
+.vkey { color: var(--blue); white-space: nowrap; min-width: 64px; }
+.vsep { color: var(--dim); padding: 0 4px; }
+.vval { color: var(--text); }
+.venue-note {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #111800;
+  border: 1px solid #2a3300;
+  color: var(--amber);
+  font-size: 11px;
+  line-height: 1.6;
+  display: flex;
+  gap: 8px;
+}
+
+/* ============================================================
+   APPLY PANE
+   ============================================================ */
+.apply-body { display: flex; flex-direction: column; gap: 20px; }
+
+.apply-intro { max-width: 680px; }
+.apply-text { color: var(--text); font-size: 13px; line-height: 1.7; }
+
+.apply-form { display: flex; flex-direction: column; gap: 14px; max-width: 680px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.form-field { display: flex; flex-direction: column; gap: 5px; }
+.form-label { color: var(--dim); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+.form-input {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 12px;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.form-input:focus { border-color: var(--green); }
+.form-input::placeholder { color: var(--dim); }
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.form-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+.form-note { color: var(--dim); font-size: 11px; }
+
+/* ============================================================
+   SCROLLBARS
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); }
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  body { font-size: 12px; }
+
+  .tmux-bar.top .tmux-win { display: none; }
+  .tmux-bar.top .tmux-win.active-win { display: block; }
+
+  .pane-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  #pane-hero        { grid-column: 1; grid-row: 1; }
+  #pane-stats       { grid-column: 1; grid-row: 2; }
+  #pane-theme       { grid-column: 1; grid-row: 3; }
+  #pane-sessions    { grid-column: 1; grid-row: 4; }
+  #pane-participants { grid-column: 1; grid-row: 5; }
+  #pane-venue       { grid-column: 1; grid-row: 6; }
+  #pane-apply       { grid-column: 1; grid-row: 7; }
+
+  .ascii-art { font-size: 7px; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .sessions-grid { grid-template-columns: 1fr; }
+
+  .hero-actions { flex-direction: column; }
+
+  .tmux-bar.bottom .tmux-info { font-size: 10px; }
+
+  #boot-screen { padding: 16px; }
+  #boot-inner { font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .pane-body { padding: 14px; }
+  .ascii-art { font-size: 5.5px; }
+  .tmux-bar { font-size: 10px; }
+}
+
+/* ============================================================
+   SELECTION & FOCUS
+   ============================================================ */
+::selection { background: var(--green); color: #000; }
+a:focus-visible { outline: 1px solid var(--green); outline-offset: 2px; }
