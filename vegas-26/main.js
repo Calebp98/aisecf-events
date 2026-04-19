@@ -4,37 +4,37 @@
 
 const BOOT_LINES = [
   { text: "BIOS v2.1.4  |  VASF SECURE BOOT INIT", cls: "log-dim", delay: 0 },
-  { text: "", cls: "log-dim", delay: 80 },
-  { text: "Checking secure enclave..............[ OK ]", cls: "log-ok", delay: 160 },
-  { text: "Loading kernel modules................[ OK ]", cls: "log-ok", delay: 280 },
-  { text: "", cls: "log-dim", delay: 380 },
-  { text: "$ pip install adversarial-robustness-toolbox", cls: "log-info", delay: 460 },
-  { text: "  Downloading art-1.18.0.tar.gz (2.1 MB)", cls: "log-dim", delay: 600 },
-  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  2.1/2.1 MB  ✓", cls: "log-ok", delay: 780 },
-  { text: "  Installing collected packages: art", cls: "log-dim", delay: 900 },
-  { text: "  Successfully installed art-1.18.0", cls: "log-ok", delay: 980 },
-  { text: "", cls: "log-dim", delay: 1040 },
-  { text: "$ pip install llm-red-team torch transformers", cls: "log-info", delay: 1100 },
-  { text: "  Downloading llm-red-team-0.9.2.tar.gz", cls: "log-dim", delay: 1220 },
-  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  5.4/5.4 MB  ✓", cls: "log-ok", delay: 1400 },
-  { text: "  Downloading torch-2.6.0 (890 MB)", cls: "log-dim", delay: 1500 },
-  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  890/890 MB  ✓", cls: "log-ok", delay: 1800 },
-  { text: "  Successfully installed llm-red-team torch transformers", cls: "log-ok", delay: 1900 },
-  { text: "", cls: "log-dim", delay: 1960 },
-  { text: "$ git clone vasf-2026-ctf --depth 1", cls: "log-info", delay: 2020 },
-  { text: "  Cloning into 'vasf-2026-ctf'...", cls: "log-dim", delay: 2160 },
-  { text: "  remote: Enumerating objects: 1337, done.", cls: "log-dim", delay: 2300 },
-  { text: "  ✓  Repo cloned. 1337 objects.", cls: "log-ok", delay: 2440 },
-  { text: "", cls: "log-dim", delay: 2500 },
-  { text: "$ vasf-init --load-config event.toml", cls: "log-info", delay: 2560 },
-  { text: "  [config] location     = Las Vegas, NV", cls: "log-dim", delay: 2700 },
-  { text: "  [config] dates        = 2026-08-14 to 2026-08-16", cls: "log-dim", delay: 2800 },
-  { text: "  [config] attendees    = 70 (capped)", cls: "log-dim", delay: 2900 },
-  { text: "  [config] ctf_enabled  = true", cls: "log-dim", delay: 3000 },
-  { text: "  [config] network_log  = false  # nice try", cls: "log-warn", delay: 3100 },
-  { text: "", cls: "log-dim", delay: 3160 },
-  { text: "  All systems nominal. Launching VASF 2026...", cls: "log-ok", delay: 3260 },
-  { text: "", cls: "log-dim", delay: 3360 },
+  { text: "", cls: "log-dim", delay: 27 },
+  { text: "Checking secure enclave..............[ OK ]", cls: "log-ok", delay: 53 },
+  { text: "Loading kernel modules................[ OK ]", cls: "log-ok", delay: 93 },
+  { text: "", cls: "log-dim", delay: 127 },
+  { text: "$ pip install adversarial-robustness-toolbox", cls: "log-info", delay: 153 },
+  { text: "  Downloading art-1.18.0.tar.gz (2.1 MB)", cls: "log-dim", delay: 200 },
+  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  2.1/2.1 MB  ✓", cls: "log-ok", delay: 260 },
+  { text: "  Installing collected packages: art", cls: "log-dim", delay: 300 },
+  { text: "  Successfully installed art-1.18.0", cls: "log-ok", delay: 327 },
+  { text: "", cls: "log-dim", delay: 347 },
+  { text: "$ pip install llm-red-team torch transformers", cls: "log-info", delay: 367 },
+  { text: "  Downloading llm-red-team-0.9.2.tar.gz", cls: "log-dim", delay: 407 },
+  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  5.4/5.4 MB  ✓", cls: "log-ok", delay: 467 },
+  { text: "  Downloading torch-2.6.0 (890 MB)", cls: "log-dim", delay: 500 },
+  { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  890/890 MB  ✓", cls: "log-ok", delay: 600 },
+  { text: "  Successfully installed llm-red-team torch transformers", cls: "log-ok", delay: 633 },
+  { text: "", cls: "log-dim", delay: 653 },
+  { text: "$ git clone vasf-2026-ctf --depth 1", cls: "log-info", delay: 673 },
+  { text: "  Cloning into 'vasf-2026-ctf'...", cls: "log-dim", delay: 720 },
+  { text: "  remote: Enumerating objects: 1337, done.", cls: "log-dim", delay: 767 },
+  { text: "  ✓  Repo cloned. 1337 objects.", cls: "log-ok", delay: 813 },
+  { text: "", cls: "log-dim", delay: 833 },
+  { text: "$ vasf-init --load-config event.toml", cls: "log-info", delay: 853 },
+  { text: "  [config] location     = Las Vegas, NV", cls: "log-dim", delay: 900 },
+  { text: "  [config] dates        = 2026-08-14 to 2026-08-16", cls: "log-dim", delay: 933 },
+  { text: "  [config] attendees    = 70 (capped)", cls: "log-dim", delay: 967 },
+  { text: "  [config] ctf_enabled  = true", cls: "log-dim", delay: 1000 },
+  { text: "  [config] network_log  = false  # nice try", cls: "log-warn", delay: 1033 },
+  { text: "", cls: "log-dim", delay: 1053 },
+  { text: "  All systems nominal. Launching VASF 2026...", cls: "log-ok", delay: 1087 },
+  { text: "", cls: "log-dim", delay: 1120 },
 ];
 
 function runBoot() {
@@ -52,9 +52,9 @@ function runBoot() {
         requestAnimationFrame(() => {
           requestAnimationFrame(() => site.classList.add("visible"));
         });
-        setTimeout(() => bootScreen.remove(), 600);
+        setTimeout(() => bootScreen.remove(), 200);
         initSite();
-      }, 400);
+      }, 133);
       return;
     }
     const item = BOOT_LINES[i];
@@ -68,7 +68,7 @@ function runBoot() {
     const wait = next ? (next.delay - item.delay) : 80;
     setTimeout(nextLine, Math.max(wait, 20));
   }
-  setTimeout(nextLine, 200);
+  setTimeout(nextLine, 67);
 }
 
 /* ============================================================
@@ -100,17 +100,17 @@ function runTypewriter() {
     function type() {
       if (i < text.length) {
         el.textContent += text[i++];
-        setTimeout(type, 40 + Math.random() * 30);
+        setTimeout(type, 13 + Math.random() * 10);
       }
     }
-    setTimeout(type, 300);
+    setTimeout(type, 100);
   });
 }
 
 function animateBars() {
   const fills = document.querySelectorAll(".stat-fill");
   fills.forEach((fill, idx) => {
-    fill.style.animationDelay = `${idx * 120}ms`;
+    fill.style.animationDelay = `${idx * 40}ms`;
   });
 }
 

@@ -51,7 +51,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 24px 28px;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.167s ease;
 }
 #boot-screen.fade-out {
   opacity: 0;
@@ -92,7 +92,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.2s ease;
 }
 #site.visible { opacity: 1; }
 .hidden { display: none !important; }
@@ -277,7 +277,7 @@ body {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, var(--green), var(--blue));
-  animation: bar-load 1.2s ease forwards;
+  animation: bar-load 0.4s ease forwards;
   transform: scaleX(0);
   transform-origin: left;
 }
