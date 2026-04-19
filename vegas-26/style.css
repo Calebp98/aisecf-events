@@ -341,11 +341,12 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.session-type.keynote  { background: #001a0d; color: var(--green); border: 1px solid var(--green-d); }
-.session-type.talk     { background: #1a1000; color: var(--amber); border: 1px solid #664400; }
-.session-type.workshop { background: #0a0a1a; color: var(--blue); border: 1px solid #224466; }
-.session-type.panel    { background: #1a001a; color: var(--purple); border: 1px solid #4a1a6a; }
-.session-type.ctf      { background: #1a0000; color: var(--red); border: 1px solid #660000; }
+.session-type.keynote   { background: #001a0d; color: var(--green); border: 1px solid var(--green-d); }
+.session-type.talk      { background: #1a1000; color: var(--amber); border: 1px solid #664400; }
+.session-type.workshop  { background: #0a0a1a; color: var(--blue); border: 1px solid #224466; }
+.session-type.panel     { background: #1a001a; color: var(--purple); border: 1px solid #4a1a6a; }
+.session-type.fireside  { background: #0d0a00; color: #e0b840; border: 1px solid #5a4800; }
+.session-type.tabletop  { background: #001010; color: #40c8c8; border: 1px solid #1a5a5a; }
 
 .session-title { color: var(--text-hi); font-size: 13px; font-weight: 500; line-height: 1.4; }
 .session-desc  { color: var(--muted); font-size: 11px; line-height: 1.6; flex: 1; }
@@ -365,6 +366,11 @@ body {
   background: var(--bg-card);
 }
 .org:hover { border-color: var(--green); color: var(--green); cursor: default; }
+
+.breakdown-list { display: flex; flex-direction: column; gap: 4px; }
+.breakdown-row { display: flex; gap: 10px; font-size: 11px; }
+.breakdown-pct { color: var(--green); min-width: 56px; white-space: nowrap; }
+.breakdown-label { color: var(--text); }
 
 .testimonials { display: flex; flex-direction: column; gap: 12px; }
 .testimonial { border-left: 2px solid var(--border-hi); padding-left: 12px; }
