@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VASF 2026 — Vegas AI Security Forum</title>
+  <title>Vegas AI Security Forum '26</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -26,14 +26,14 @@
   <!-- TMUX STATUS BAR TOP -->
   <div class="tmux-bar top">
     <div class="tmux-bar-left">
-      <span class="tmux-session">[vasf-2026]</span>
+      <span class="tmux-session">[aisf-vegas-2026]</span>
       <span class="tmux-win active-win">0:main</span>
       <span class="tmux-win">1:sessions</span>
       <span class="tmux-win">2:speakers</span>
       <span class="tmux-win">3:venue</span>
     </div>
     <div class="tmux-bar-right">
-      <span class="tmux-info">LAS VEGAS · AUG 14–16 2026</span>
+      <span class="tmux-info">LAS VEGAS · AUG 2026</span>
       <span class="tmux-clock" id="tmux-clock"></span>
     </div>
   </div>
@@ -44,7 +44,7 @@
     <!-- PANE: HERO -->
     <div class="pane pane-hero" id="pane-hero">
       <div class="pane-title-bar">
-        <span class="pane-label">~/vasf/welcome</span>
+        <span class="pane-label">~/aisf/vegas/welcome</span>
         <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
       </div>
       <div class="pane-body hero-body">
@@ -60,8 +60,8 @@
 <pre class="ascii-sub">AI SECURITY FORUM · LAS VEGAS · 2026</pre>
         </div>
         <div class="hero-prompt">
-          <p class="prompt-line"><span class="prompt-sym">❯</span> <span class="typed-text" data-text="Adversarial ML. Red teaming. Model security."></span><span class="blink-cursor">▋</span></p>
-          <p class="hero-desc">Three days. Seventy researchers. Zero corporate BS.<br/>The most technical AI security event in the desert.</p>
+          <p class="prompt-line"><span class="prompt-sym">❯</span> <span class="typed-text" data-text="Security research, engineering, and policy."></span><span class="blink-cursor">▋</span></p>
+          <p class="hero-desc">A ~200 person event bringing together researchers, engineers, and policymakers<br/>working to secure powerful AI systems—preventing catastrophes while accelerating scientific progress.</p>
           <div class="hero-actions">
             <a href="#apply" class="btn-terminal">./apply --now</a>
             <a href="#sessions" class="btn-ghost">cat sessions.md</a>
@@ -80,33 +80,33 @@
         <div class="stat-row">
           <span class="stat-label">ATTENDEES</span>
           <span class="stat-bar"><span class="stat-fill" style="width:82%"></span></span>
-          <span class="stat-val">~70</span>
+          <span class="stat-val">~200</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">SESSIONS </span>
           <span class="stat-bar"><span class="stat-fill" style="width:60%"></span></span>
-          <span class="stat-val">24</span>
+          <span class="stat-val">16+</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">ORGS     </span>
           <span class="stat-bar"><span class="stat-fill" style="width:70%"></span></span>
-          <span class="stat-val">35+</span>
+          <span class="stat-val">50+</span>
         </div>
         <div class="stat-row">
-          <span class="stat-label">DAYS     </span>
-          <span class="stat-bar"><span class="stat-fill" style="width:100%"></span></span>
-          <span class="stat-val">3</span>
+          <span class="stat-label">DAY      </span>
+          <span class="stat-bar"><span class="stat-fill" style="width:33%"></span></span>
+          <span class="stat-val">1</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-tags">
+          <span class="tag">model-weight-security</span>
+          <span class="tag">cyber-evals</span>
           <span class="tag">adversarial-ml</span>
-          <span class="tag">red-teaming</span>
-          <span class="tag">jailbreaks</span>
-          <span class="tag">alignment</span>
-          <span class="tag">agentic-systems</span>
-          <span class="tag">model-exfil</span>
-          <span class="tag">evals</span>
           <span class="tag">supply-chain</span>
+          <span class="tag">hardware-verification</span>
+          <span class="tag">ai-insider-risk</span>
+          <span class="tag">threat-models</span>
+          <span class="tag">policy</span>
         </div>
       </div>
     </div>
@@ -118,15 +118,15 @@
         <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
       </div>
       <div class="pane-body theme-body">
-        <p class="comment"># 2026 Theme: Trust No Model</p>
-        <p class="theme-text">AI systems are now infrastructure. They route decisions, sign code, manage agents, and increasingly <span class="hl">act autonomously</span>. The attack surface has never been larger — and most defenders haven't caught up.</p>
-        <p class="theme-text">VASF 2026 brings together the researchers who are <span class="hl">actively breaking and hardening</span> these systems: red teamers at frontier labs, academic adversarial ML researchers, government threat analysts, and independent security engineers.</p>
+        <p class="comment"># About the Forum</p>
+        <p class="theme-text">We believe there is a significant chance transformative AI will be developed within this decade. <span class="hl">Securing those systems is on the critical path</span> to preventing global catastrophe — and to ensuring the benefits of powerful AI are broadly realized.</p>
+        <p class="theme-text">Vegas AI Security Forum '26 brings together <span class="hl">security engineers and researchers, policymakers, and members of the national security community</span> to drive thought partnership and advance the field of AI security.</p>
         <p class="comment"># Format</p>
         <ul class="theme-list">
-          <li><span class="bullet">→</span> Invitation-only, capped at 70 attendees</li>
-          <li><span class="bullet">→</span> Chatham House rules by default</li>
-          <li><span class="bullet">→</span> Technical depth over marketing fluff</li>
-          <li><span class="bullet">→</span> Evening CTF: live red team exercises</li>
+          <li><span class="bullet">→</span> Application-based attendance, ~200 attendees</li>
+          <li><span class="bullet">→</span> Keynote talks, workshops, and fireside chats</li>
+          <li><span class="bullet">→</span> Panels, tabletop exercises, and networking meals</li>
+          <li><span class="bullet">→</span> Runs alongside DEF CON week</li>
         </ul>
       </div>
     </div>
@@ -141,59 +141,59 @@
         <div class="sessions-grid">
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">09:00</span><span class="session-type keynote">keynote</span></div>
-            <h3 class="session-title">Agentic Systems Are the New Supply Chain</h3>
-            <p class="session-desc">How tool-calling agents introduce novel injection and privilege escalation vectors that traditional AppSec tooling completely misses.</p>
-            <span class="session-speaker">@redacted</span>
+            <div class="session-meta"><span class="session-day">MORNING</span><span class="session-time">10:00</span><span class="session-type keynote">keynote</span></div>
+            <h3 class="session-title">The State of AI Security: Threats, Progress, and Gaps</h3>
+            <p class="session-desc">An opening survey of where the field stands—what attacks are materializing, where defenses have advanced, and what remains unsolved heading into 2026.</p>
+            <span class="session-speaker">TBA</span>
           </div>
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">11:00</span><span class="session-type workshop">workshop</span></div>
-            <h3 class="session-title">Prompt Injection at Scale: Automated Discovery</h3>
-            <p class="session-desc">Hands-on: building fuzzers for LLM instruction hierarchies. Bring a laptop. We'll attack three deployed systems.</p>
-            <span class="session-speaker">Maya R. · Independent Researcher</span>
+            <div class="session-meta"><span class="session-day">MORNING</span><span class="session-time">11:00</span><span class="session-type talk">talk</span></div>
+            <h3 class="session-title">Model Weight Security: From Threat Model to Practice</h3>
+            <p class="session-desc">What does protecting frontier model weights actually require? Practical threat modeling for labs, cloud providers, and the national security community.</p>
+            <span class="session-speaker">Frontier Lab Security (Anon)</span>
           </div>
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 1</span><span class="session-time">14:00</span><span class="session-type talk">talk</span></div>
-            <h3 class="session-title">Model Weight Exfiltration: Threat Modeling</h3>
-            <p class="session-desc">What does it actually take to steal a frontier model? Practical threat modeling for labs and cloud providers.</p>
-            <span class="session-speaker">Frontier Lab Red Team (Anon)</span>
-          </div>
-
-          <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">09:00</span><span class="session-type keynote">keynote</span></div>
-            <h3 class="session-title">Evals as a Security Primitive</h3>
-            <p class="session-desc">Why eval suites are the closest thing we have to unit tests for alignment, and how adversaries are already gaming them.</p>
-            <span class="session-speaker">Dr. Kenji T. · MATS</span>
-          </div>
-
-          <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">11:00</span><span class="session-type panel">panel</span></div>
-            <h3 class="session-title">Responsible Disclosure for AI Vulns</h3>
-            <p class="session-desc">The CVE model doesn't map cleanly onto model behavior. How do we build norms for reporting jailbreaks, emergent capabilities, and misuse vectors?</p>
+            <div class="session-meta"><span class="session-day">MORNING</span><span class="session-time">11:45</span><span class="session-type panel">panel</span></div>
+            <h3 class="session-title">Cyber Capability Evaluations: What Works and What Doesn't</h3>
+            <p class="session-desc">How should we evaluate AI systems for dangerous cyber capabilities? Researchers, evaluators, and policymakers discuss methodology, limitations, and governance implications.</p>
             <span class="session-speaker">Panel · 4 speakers</span>
           </div>
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 2</span><span class="session-time">14:00</span><span class="session-type workshop">workshop</span></div>
-            <h3 class="session-title">Multimodal Attack Surfaces</h3>
-            <p class="session-desc">Vision models, audio injection, document poisoning. Practical demos of cross-modal attacks against deployed systems.</p>
-            <span class="session-speaker">Sara K. · Academic (CMU)</span>
+            <div class="session-meta"><span class="session-day">AFTERNOON</span><span class="session-time">13:30</span><span class="session-type workshop">workshop</span></div>
+            <h3 class="session-title">Adversarial ML: Attacks on Deployed Systems</h3>
+            <p class="session-desc">Hands-on workshop covering prompt injection, data poisoning, and evasion techniques against production AI systems. Bring a laptop.</p>
+            <span class="session-speaker">TBA · Independent Researcher</span>
           </div>
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 3</span><span class="session-time">09:00</span><span class="session-type talk">talk</span></div>
-            <h3 class="session-title">Red Teaming Government AI: Lessons from NIST</h3>
-            <p class="session-desc">What happens when federal agencies deploy LLMs for sensitive workflows? Field notes from two years of government red teaming engagements.</p>
-            <span class="session-speaker">Gov Red Team (Anon)</span>
+            <div class="session-meta"><span class="session-day">AFTERNOON</span><span class="session-time">14:30</span><span class="session-type talk">talk</span></div>
+            <h3 class="session-title">AI as Insider Risk: Monitoring and Protecting Against Self-Exfiltration</h3>
+            <p class="session-desc">As AI systems gain more autonomy, what does it mean for them to act against their operators' interests? Detection and mitigation strategies from the field.</p>
+            <span class="session-speaker">TBA</span>
           </div>
 
           <div class="session-card">
-            <div class="session-meta"><span class="session-day">DAY 3</span><span class="session-time">11:00</span><span class="session-type ctf">ctf</span></div>
-            <h3 class="session-title">CTF Finals: BREAKMODEL</h3>
-            <p class="session-desc">The two-day capture-the-flag wraps up. Live scoring. Teams will have been attacking a sandboxed agentic deployment since Day 1 evening.</p>
+            <div class="session-meta"><span class="session-day">AFTERNOON</span><span class="session-time">15:30</span><span class="session-type fireside">fireside</span></div>
+            <h3 class="session-title">Hardware-Enabled Verification: Can We Trust the Compute Stack?</h3>
+            <p class="session-desc">A conversation on hardware security primitives, chip-level attestation, and what verification mechanisms could underpin AI governance frameworks.</p>
+            <span class="session-speaker">Fireside chat · 2 speakers</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">AFTERNOON</span><span class="session-time">16:30</span><span class="session-type tabletop">tabletop</span></div>
+            <h3 class="session-title">Tabletop: AI Supply Chain Compromise Scenario</h3>
+            <p class="session-desc">A structured scenario exercise walking through a realistic AI supply chain attack. Cross-sector teams develop detection, response, and policy recommendations.</p>
             <span class="session-speaker">All attendees</span>
+          </div>
+
+          <div class="session-card">
+            <div class="session-meta"><span class="session-day">EVENING</span><span class="session-time">18:00</span><span class="session-type panel">panel</span></div>
+            <h3 class="session-title">Policy Frontiers: Governing AI Security at Scale</h3>
+            <p class="session-desc">What policy mechanisms can keep pace with rapidly advancing AI capabilities? A candid cross-sector conversation on disclosure norms, compute governance, and international coordination.</p>
+            <span class="session-speaker">Panel · government, industry, academia</span>
           </div>
 
         </div>
@@ -211,29 +211,37 @@
         <div class="orgs-grid">
           <span class="org">Anthropic</span>
           <span class="org">OpenAI</span>
-          <span class="org">DeepMind</span>
+          <span class="org">Google DeepMind</span>
           <span class="org">CISA</span>
           <span class="org">DARPA</span>
           <span class="org">NSA/CSS</span>
           <span class="org">MIT CSAIL</span>
           <span class="org">CMU CyLab</span>
           <span class="org">Stanford HAI</span>
-          <span class="org">EleutherAI</span>
-          <span class="org">Scale AI</span>
-          <span class="org">Palantir</span>
-          <span class="org">Dragos</span>
-          <span class="org">Mandiant</span>
           <span class="org">RAND Corp</span>
+          <span class="org">Palo Alto Networks</span>
           <span class="org">CrowdStrike</span>
+          <span class="org">NIST</span>
+          <span class="org">Mandiant</span>
+          <span class="org">Georgetown CSET</span>
+          <span class="org">Redwood Research</span>
+        </div>
+        <p class="comment"># attendee breakdown (prior event)</p>
+        <div class="breakdown-list">
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">government / national security / think tanks</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">AI companies and research institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">other tech companies</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">10–15%</span><span class="breakdown-label">academic institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">independent researchers, consultants, nonprofits</span></div>
         </div>
         <div class="testimonials">
           <div class="testimonial">
-            <p class="t-text">"The only AI security event where talks are actually technical. No vendor pitches. Just researchers hacking things."</p>
-            <span class="t-attr">— ML Safety Researcher, Frontier Lab</span>
+            <p class="t-text">"The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other."</p>
+            <span class="t-attr">— Security Researcher, AI Lab</span>
           </div>
           <div class="testimonial">
-            <p class="t-text">"I learned more in 3 days at VASF than in 6 months of reading papers."</p>
-            <span class="t-attr">— Red Team Lead, Major Tech Co.</span>
+            <p class="t-text">"I left with a clearer sense of the threat landscape and a network of people I can actually call when things go sideways."</p>
+            <span class="t-attr">— Policy Advisor, National Security Community</span>
           </div>
         </div>
       </div>
@@ -246,13 +254,13 @@
         <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
       </div>
       <div class="pane-body venue-body">
-        <div class="venue-line"><span class="vkey">location</span><span class="vsep">=</span><span class="vval">The Venetian Resort, Las Vegas, NV</span></div>
-        <div class="venue-line"><span class="vkey">dates   </span><span class="vsep">=</span><span class="vval">Aug 14 – 16, 2026</span></div>
-        <div class="venue-line"><span class="vkey">capacity</span><span class="vsep">=</span><span class="vval">70 (hard cap, invitation only)</span></div>
-        <div class="venue-line"><span class="vkey">overlap </span><span class="vsep">=</span><span class="vval">DEF CON week (Aug 8–11) + recovery window</span></div>
-        <div class="venue-line"><span class="vkey">network </span><span class="vsep">=</span><span class="vval">Isolated VLAN, no logging (you're welcome)</span></div>
-        <div class="venue-line"><span class="vkey">catering</span><span class="vsep">=</span><span class="vval">Full. We feed you. Focus on the work.</span></div>
-        <div class="venue-note"><span class="prompt-sym">!</span> VASF runs the week after DEF CON. Many attendees stay in Vegas. We handle housing coordination upon acceptance.</div>
+        <div class="venue-line"><span class="vkey">location</span><span class="vsep">=</span><span class="vval">Las Vegas, NV (venue TBA)</span></div>
+        <div class="venue-line"><span class="vkey">date    </span><span class="vsep">=</span><span class="vval">August 2026 (exact date TBA)</span></div>
+        <div class="venue-line"><span class="vkey">capacity</span><span class="vsep">=</span><span class="vval">~200 (application-based)</span></div>
+        <div class="venue-line"><span class="vkey">overlap </span><span class="vsep">=</span><span class="vval">Runs alongside DEF CON week</span></div>
+        <div class="venue-line"><span class="vkey">format  </span><span class="vsep">=</span><span class="vval">10AM – 10PM · talks, workshops, networking meals</span></div>
+        <div class="venue-line"><span class="vkey">sponsor </span><span class="vsep">=</span><span class="vval">Fiscally sponsored by Hack Club (501(c)(3), EIN 81-2908499)</span></div>
+        <div class="venue-note"><span class="prompt-sym">!</span> Venue and exact date will be announced via our newsletter. Subscribe to stay informed.</div>
       </div>
     </div>
 
@@ -264,8 +272,8 @@
       </div>
       <div class="pane-body apply-body">
         <div class="apply-intro">
-          <p class="comment"># Applications open. Rolling admissions. ~30 spots remain.</p>
-          <p class="apply-text">We read every application. We're looking for people who are <span class="hl">actively doing the work</span>: researchers, red teamers, builders, and policy people who go deep on technical details. Your GitHub matters more than your title.</p>
+          <p class="comment"># Applications open. Rolling admissions.</p>
+          <p class="apply-text">We read every application. We're looking for <span class="hl">security engineers and researchers, policymakers, and members of the national security community</span> who are serious about AI security. We particularly encourage applications from underrepresented groups, including women, people of color, LGBTQ+ individuals, and those from diverse socioeconomic backgrounds.</p>
         </div>
         <form class="apply-form" id="apply-form">
           <div class="form-row">
@@ -304,10 +312,10 @@
   <div class="tmux-bar bottom">
     <div class="tmux-bar-left">
       <span class="tmux-mode">[NORMAL]</span>
-      <span class="tmux-path">~/vasf/2026</span>
+      <span class="tmux-path">~/aisf/vegas-2026</span>
     </div>
     <div class="tmux-bar-right">
-      <span class="tmux-info">vasf@vegas · questions: <a href="mailto:hello@vasf.io" class="bar-link">hello@vasf.io</a></span>
+      <span class="tmux-info">AI Security Forum · questions: <a href="mailto:caleb@aisecurityforum.com" class="bar-link">caleb@aisecurityforum.com</a></span>
     </div>
   </div>
 
