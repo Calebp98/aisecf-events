@@ -148,13 +148,11 @@ body {
 }
 
 /* Pane row assignments */
-#pane-venue      { grid-column: 1 / -1; grid-row: 1; }
-#pane-hero       { grid-column: 1; grid-row: 2; }
-#pane-stats      { grid-column: 2; grid-row: 2 / 4; }
-#pane-theme      { grid-column: 1; grid-row: 3; }
-#pane-sessions   { grid-column: 1 / -1; grid-row: 4; }
-#pane-participants { grid-column: 1 / -1; grid-row: 5; }
-#pane-apply      { grid-column: 1 / -1; grid-row: 6; }
+#pane-hero       { grid-column: 1; grid-row: 1; }
+#pane-stats      { grid-column: 2; grid-row: 1 / 3; }
+#pane-theme      { grid-column: 1; grid-row: 2; }
+#pane-sessions   { grid-column: 1 / -1; grid-row: 3; }
+#pane-participants { grid-column: 1 / -1; grid-row: 4; }
 
 /* ============================================================
    PANE BASE STYLES
@@ -418,8 +416,9 @@ body {
 .t-attr { color: var(--dim); font-size: 10px; display: block; margin-top: 4px; }
 
 /* ============================================================
-   VENUE PANE
+   VENUE (embedded in hero)
    ============================================================ */
+.hero-venue { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
 .venue-body { display: flex; flex-direction: column; gap: 8px; }
 .venue-line { display: flex; gap: 4px; font-size: 12px; align-items: baseline; }
 .vkey { color: var(--blue); white-space: nowrap; min-width: 64px; }
@@ -494,8 +493,6 @@ body {
   #pane-theme       { grid-column: 1; grid-row: 3; }
   #pane-sessions    { grid-column: 1; grid-row: 4; }
   #pane-participants { grid-column: 1; grid-row: 5; }
-  #pane-venue       { grid-column: 1; grid-row: 6; }
-  #pane-apply       { grid-column: 1; grid-row: 7; }
 
   .ascii-art { font-size: 7px; }
 
