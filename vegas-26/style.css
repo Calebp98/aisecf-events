@@ -153,6 +153,7 @@ body {
 #pane-theme      { grid-column: 1; grid-row: 2; }
 #pane-sessions   { grid-column: 1 / -1; grid-row: 3; }
 #pane-participants { grid-column: 1 / -1; grid-row: 4; }
+#pane-apply      { grid-column: 1 / -1; grid-row: 5; }
 
 /* ============================================================
    PANE BASE STYLES
