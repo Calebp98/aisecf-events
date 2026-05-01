@@ -516,7 +516,7 @@ body {
   #pane-stats       { grid-column: 1; grid-row: 2; }
   #pane-theme       { grid-column: 1; grid-row: 3; }
   #pane-sessions    { grid-column: 1; grid-row: 4; }
-  #pane-participants { grid-column: 1; grid-row: 5; }
+  #speakers         { grid-column: 1; grid-row: 5; }
 
   .ascii-art { font-size: 7px; }
 
