@@ -28,10 +28,10 @@
     <div class="tmux-bar-left">
       <a href="https://aisecurity.forum" class="bar-link tmux-session">~/aisecurity.forum</a>
       <span class="tmux-session">[aisf-vegas-2026]</span>
-      <span class="tmux-win active-win">0:main</span>
-      <span class="tmux-win">1:sessions</span>
-      <span class="tmux-win">2:speakers</span>
-      <span class="tmux-win">3:venue</span>
+      <a href="#pane-hero" class="tmux-win active-win">0:main</a>
+      <a href="#sessions" class="tmux-win">1:sessions</a>
+      <a href="#speakers" class="tmux-win">2:speakers</a>
+      <a href="#venue" class="tmux-win">3:venue</a>
     </div>
     <div class="tmux-bar-right">
       <span class="tmux-info">LAS VEGAS · AUG 2026</span>
@@ -68,7 +68,7 @@
             <span class="spaces-warning"><span class="prompt-sym">!</span> Spaces are limited — apply early to avoid disappointment.</span>
           </div>
           <p class="prompt-line hero-cmd"><span class="prompt-sym">❯</span> <a href="#sessions" class="cmd-link">cat sessions.md</a></p>
-          <div class="hero-venue">
+          <div class="hero-venue" id="venue">
             <div class="venue-line"><span class="vkey">location</span><span class="vsep">=</span><span class="vval">Las Vegas, NV (venue TBA)</span></div>
             <div class="venue-line"><span class="vkey">date    </span><span class="vsep">=</span><span class="vval">August 6, 2026</span></div>
             <div class="venue-line"><span class="vkey">capacity</span><span class="vsep">=</span><span class="vval">~200 (application-based)</span></div>
@@ -154,7 +154,7 @@
             <p class="tba-desc">Session details will be published closer to the event. Subscribe to our newsletter to be notified when the programme is released.</p>
           </div>
         </div>
-        <div class="participants-body">
+        <div class="participants-body" id="speakers">
           <p class="comment"># past attendees include people from</p>
           <div class="orgs-grid">
             <span class="org">Anthropic</span>

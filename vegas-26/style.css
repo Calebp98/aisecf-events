@@ -125,7 +125,8 @@ body {
 }
 
 .tmux-session { color: var(--green); font-weight: 700; margin-right: 4px; }
-.tmux-win { color: var(--muted); padding: 0 6px; }
+.tmux-win { color: var(--muted); padding: 0 6px; text-decoration: none; }
+.tmux-win:hover { color: var(--text-hi); }
 .tmux-win.active-win { color: var(--text-hi); background: #2a2a2a; }
 .tmux-info { color: var(--muted); white-space: nowrap; }
 .tmux-clock { color: var(--amber); font-weight: 500; }
