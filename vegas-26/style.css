@@ -152,7 +152,6 @@ body {
 #pane-stats      { grid-column: 2; grid-row: 1 / 3; }
 #pane-theme      { grid-column: 1; grid-row: 2; }
 #pane-sessions   { grid-column: 1 / -1; grid-row: 3; }
-#pane-participants { grid-column: 1 / -1; grid-row: 4; }
 
 /* ============================================================
    PANE BASE STYLES
@@ -394,9 +393,16 @@ body {
 }
 
 /* ============================================================
-   PARTICIPANTS PANE
+   PARTICIPANTS (merged into sessions pane)
    ============================================================ */
-.participants-body { display: flex; flex-direction: column; gap: 16px; }
+.participants-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+  padding-top: 24px;
+}
 
 .orgs-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .org {
