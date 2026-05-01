@@ -28,7 +28,7 @@ const BOOT_LINES = [
   { text: "", cls: "log-dim", delay: 417 },
   { text: "$ vasf-init --load-config event.toml", cls: "log-info", delay: 427 },
   { text: "  [config] location     = Las Vegas, NV", cls: "log-dim", delay: 450 },
-  { text: "  [config] dates        = 2026-08-14 to 2026-08-16", cls: "log-dim", delay: 467 },
+  { text: "  [config] date         = 2026-08-06", cls: "log-dim", delay: 467 },
   { text: "  [config] attendees    = 70 (capped)", cls: "log-dim", delay: 484 },
   { text: "  [config] ctf_enabled  = true", cls: "log-dim", delay: 500 },
   { text: "  [config] network_log  = false  # nice try", cls: "log-warn", delay: 517 },
