@@ -141,7 +141,7 @@
     </div>
 
     <!-- PANE: SESSIONS + PARTICIPANTS -->
-    <div class="pane pane-sessions full-width" id="sessions">
+    <div class="pane pane-sessions" id="sessions">
       <div class="pane-title-bar">
         <span class="pane-label">ls -la sessions/</span>
         <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
@@ -154,43 +154,51 @@
             <p class="tba-desc">Session details will be published closer to the event. Subscribe to our newsletter to be notified when the programme is released.</p>
           </div>
         </div>
-        <div class="participants-body" id="speakers">
-          <p class="comment"># past attendees include people from</p>
-          <div class="orgs-grid">
-            <span class="org">Anthropic</span>
-            <span class="org">OpenAI</span>
-            <span class="org">Google DeepMind</span>
-            <span class="org">CISA</span>
-            <span class="org">DARPA</span>
-            <span class="org">NSA/CSS</span>
-            <span class="org">MIT CSAIL</span>
-            <span class="org">CMU CyLab</span>
-            <span class="org">Stanford HAI</span>
-            <span class="org">RAND Corp</span>
-            <span class="org">Palo Alto Networks</span>
-            <span class="org">CrowdStrike</span>
-            <span class="org">NIST</span>
-            <span class="org">Mandiant</span>
-            <span class="org">Georgetown CSET</span>
-            <span class="org">Redwood Research</span>
+      </div>
+    </div>
+
+    <!-- PANE: PAST PARTICIPANTS -->
+    <div class="pane pane-participants" id="speakers">
+      <div class="pane-title-bar">
+        <span class="pane-label">git log --format="%an" participants/</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body participants-body">
+        <p class="comment"># past attendees include people from</p>
+        <div class="orgs-grid">
+          <span class="org">Anthropic</span>
+          <span class="org">OpenAI</span>
+          <span class="org">Google DeepMind</span>
+          <span class="org">CISA</span>
+          <span class="org">DARPA</span>
+          <span class="org">NSA/CSS</span>
+          <span class="org">MIT CSAIL</span>
+          <span class="org">CMU CyLab</span>
+          <span class="org">Stanford HAI</span>
+          <span class="org">RAND Corp</span>
+          <span class="org">Palo Alto Networks</span>
+          <span class="org">CrowdStrike</span>
+          <span class="org">NIST</span>
+          <span class="org">Mandiant</span>
+          <span class="org">Georgetown CSET</span>
+          <span class="org">Redwood Research</span>
+        </div>
+        <p class="comment"># attendee breakdown (prior event)</p>
+        <div class="breakdown-list">
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">government / national security / think tanks</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">AI companies and research institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">other tech companies</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">10–15%</span><span class="breakdown-label">academic institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">independent researchers, consultants, nonprofits</span></div>
+        </div>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="t-text">"The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other."</p>
+            <span class="t-attr">— Security Researcher, AI Lab</span>
           </div>
-          <p class="comment"># attendee breakdown (prior event)</p>
-          <div class="breakdown-list">
-            <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">government / national security / think tanks</span></div>
-            <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">AI companies and research institutions</span></div>
-            <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">other tech companies</span></div>
-            <div class="breakdown-row"><span class="breakdown-pct">10–15%</span><span class="breakdown-label">academic institutions</span></div>
-            <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">independent researchers, consultants, nonprofits</span></div>
-          </div>
-          <div class="testimonials">
-            <div class="testimonial">
-              <p class="t-text">"The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other."</p>
-              <span class="t-attr">— Security Researcher, AI Lab</span>
-            </div>
-            <div class="testimonial">
-              <p class="t-text">"I left with a clearer sense of the threat landscape and a network of people I can actually call when things go sideways."</p>
-              <span class="t-attr">— Policy Advisor, National Security Community</span>
-            </div>
+          <div class="testimonial">
+            <p class="t-text">"I left with a clearer sense of the threat landscape and a network of people I can actually call when things go sideways."</p>
+            <span class="t-attr">— Policy Advisor, National Security Community</span>
           </div>
         </div>
       </div>
