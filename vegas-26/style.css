@@ -362,8 +362,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
+
+.speakers-section {
+  border-top: 1px solid var(--border);
+  padding: 20px 20px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.speakers-list { display: flex; flex-direction: column; gap: 6px; }
+
+.speaker-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 12px;
+}
+.speaker-name { color: var(--text-hi); min-width: 200px; }
+.speaker-org  { color: var(--blue); }
 
 .tba-card {
   display: flex;
