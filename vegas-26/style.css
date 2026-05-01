@@ -223,6 +223,7 @@ body {
 }
 
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.spaces-warning { color: var(--amber); font-size: 11px; align-self: center; }
 .hero-cmd { margin-top: 10px; }
 .cmd-link { color: var(--text); text-decoration: none; }
 .cmd-link:hover { color: var(--green); }

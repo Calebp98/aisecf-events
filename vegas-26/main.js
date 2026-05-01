@@ -84,11 +84,18 @@ function initSite() {
 function updateClock() {
   const el = document.getElementById("tmux-clock");
   if (!el) return;
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2, "0");
-  const m = String(now.getMinutes()).padStart(2, "0");
-  const s = String(now.getSeconds()).padStart(2, "0");
-  el.textContent = `${h}:${m}:${s}`;
+  // August 6, 2026 10:00 AM PDT (Las Vegas)
+  const target = new Date("2026-08-06T10:00:00-07:00");
+  const diff = target - Date.now();
+  if (diff <= 0) {
+    el.textContent = "[ LIVE ]";
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  el.textContent = `T-${d}d ${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 }
 
 function runTypewriter() {
