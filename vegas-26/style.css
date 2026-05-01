@@ -153,7 +153,6 @@ body {
 #pane-theme      { grid-column: 1; grid-row: 2; }
 #pane-sessions   { grid-column: 1 / -1; grid-row: 3; }
 #pane-participants { grid-column: 1 / -1; grid-row: 4; }
-#pane-apply      { grid-column: 1 / -1; grid-row: 5; }
 
 /* ============================================================
    PANE BASE STYLES
@@ -225,6 +224,9 @@ body {
 }
 
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-cmd { margin-top: 10px; }
+.cmd-link { color: var(--text); text-decoration: none; }
+.cmd-link:hover { color: var(--green); }
 
 .btn-terminal {
   display: inline-block;
