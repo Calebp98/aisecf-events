@@ -226,7 +226,7 @@ body {
 
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .spaces-warning { color: var(--amber); font-size: 13px; align-self: center; }
-.hero-cmd { margin-top: 10px; margin-bottom: 0; }
+.hero-cmd { margin-top: 10px; margin-bottom: 0 !important; }
 .cmd-link { color: var(--text); text-decoration: none; }
 .cmd-link:hover { color: var(--green); }
 
@@ -442,7 +442,7 @@ body {
 /* ============================================================
    VENUE (embedded in hero)
    ============================================================ */
-.hero-venue { margin-top: 4px; display: flex; flex-direction: column; gap: 8px; }
+.hero-venue { margin-top: 0; display: flex; flex-direction: column; gap: 8px; }
 .venue-body { display: flex; flex-direction: column; gap: 8px; }
 .venue-line { display: flex; gap: 4px; font-size: 14px; align-items: baseline; }
 .vkey { color: var(--blue); white-space: nowrap; min-width: 64px; }
