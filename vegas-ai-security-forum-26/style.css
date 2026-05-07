@@ -443,6 +443,10 @@ body {
    VENUE (embedded in hero)
    ============================================================ */
 .hero-venue { margin-top: 0; display: flex; flex-direction: column; gap: 8px; }
+.hero-quotes { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.hero-quotes .t-text { font-size: 42px; line-height: 1.3; }
+.hero-quotes .t-attr { font-size: 20px; }
+.hero-quotes .testimonial { min-height: 180px; }
 .venue-body { display: flex; flex-direction: column; gap: 8px; }
 .venue-line { display: flex; gap: 4px; font-size: 14px; align-items: baseline; }
 .vkey { color: var(--blue); white-space: nowrap; min-width: 64px; }

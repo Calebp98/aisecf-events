@@ -106,11 +106,80 @@ function runBoot() {
 /* ============================================================
    SITE INIT
    ============================================================ */
+const QUOTES = [
+  { text: "The forum helped us shape our work and product in some really meaningful ways that helped answer some really hard technical questions about what the future of Security was going to look like.", attr: "— Will Pearce, CEO @ Dreadnode" },
+  { text: "The Forum is where I've been able to connect to the beating heart of the AI Security community.", attr: "— Jason Clinton, Deputy CISO @ Anthropic" },
+  { text: "Some of the most useful conversations I've had about AI — with both technical and policy people — started at AISF. It's one of the few venues that consistently brings that range of people into the same room.", attr: "— Kristian Ronn, CEO @ Lucid Computing" },
+  { text: "The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other.", attr: "— Security Researcher, AI Lab" },
+  { text: "I left with a clearer sense of the threat landscape and a network of people I can actually call when things go sideways.", attr: "— Policy Advisor, National Security Community" },
+];
+
+const GLITCH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*<>[]{}|;:.,?/\\-_=+~`";
+
+function glitchIn(text, el, duration, onDone) {
+  const start = Date.now();
+  function frame() {
+    const progress = Math.min((Date.now() - start) / duration, 1);
+    const locked = Math.floor(progress * text.length);
+    let display = "";
+    for (let i = 0; i < text.length; i++) {
+      if (i < locked || text[i] === " ") display += text[i];
+      else display += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+    }
+    el.textContent = display;
+    if (progress < 1) setTimeout(frame, 28);
+    else { el.textContent = text; onDone && onDone(); }
+  }
+  frame();
+}
+
+function glitchOut(text, el, duration, onDone) {
+  const start = Date.now();
+  function frame() {
+    const progress = Math.min((Date.now() - start) / duration, 1);
+    const remaining = Math.floor((1 - progress) * text.length);
+    let display = "";
+    for (let i = 0; i < remaining; i++) {
+      display += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+    }
+    el.textContent = display;
+    if (progress < 1) setTimeout(frame, 28);
+    else { el.textContent = ""; onDone && onDone(); }
+  }
+  frame();
+}
+
+function runQuoteCarousel() {
+  const textEl = document.getElementById("quote-text");
+  const attrEl = document.getElementById("quote-attr");
+  if (!textEl || !attrEl) return;
+
+  let idx = Math.floor(Math.random() * QUOTES.length);
+
+  function showNext() {
+    const { text, attr } = QUOTES[idx];
+    attrEl.textContent = "";
+    glitchIn(text, textEl, 500, () => {
+      attrEl.textContent = attr;
+      setTimeout(() => {
+        attrEl.textContent = "";
+        glitchOut(text, textEl, 300, () => {
+          idx = (idx + 1) % QUOTES.length;
+          setTimeout(showNext, 300);
+        });
+      }, 3500);
+    });
+  }
+
+  setTimeout(showNext, 800);
+}
+
 function initSite() {
   updateClock();
   setInterval(updateClock, 1000);
   runTypewriter();
   animateBars();
+  runQuoteCarousel();
 }
 
 function updateClock() {
