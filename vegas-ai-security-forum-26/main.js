@@ -149,15 +149,33 @@ function glitchOut(text, el, duration, onDone) {
   frame();
 }
 
+function fitQuoteFontSize(textEl, attrEl, containerEl, text, attr) {
+  // Temporarily populate to measure; no paint occurs mid-sync-JS
+  attrEl.textContent = attr;
+  let size = 42;
+  textEl.style.fontSize = size + "px";
+  textEl.textContent = text;
+  while (containerEl.scrollHeight > containerEl.offsetHeight && size > 16) {
+    size -= 1;
+    textEl.style.fontSize = size + "px";
+  }
+  textEl.textContent = "";
+  attrEl.textContent = "";
+  return size;
+}
+
 function runQuoteCarousel() {
   const textEl = document.getElementById("quote-text");
   const attrEl = document.getElementById("quote-attr");
   if (!textEl || !attrEl) return;
+  const containerEl = attrEl.closest(".testimonial");
 
   let idx = Math.floor(Math.random() * QUOTES.length);
 
   function showNext() {
     const { text, attr } = QUOTES[idx];
+    const fontSize = fitQuoteFontSize(textEl, attrEl, containerEl, text, attr);
+    textEl.style.fontSize = fontSize + "px";
     attrEl.textContent = "";
     glitchIn(text, textEl, 500, () => {
       attrEl.textContent = attr;
