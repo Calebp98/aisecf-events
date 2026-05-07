@@ -506,6 +506,9 @@ body {
 
   .tmux-bar.top .tmux-win { display: none; }
   .tmux-bar.top .tmux-win.active-win { display: block; }
+  .tmux-bar.top .tmux-session { display: none; }
+  .tmux-clock { display: none; }
+  .tmux-bar.bottom .tmux-bar-right { display: none; }
 
   .pane-grid {
     grid-template-columns: 1fr;
@@ -525,8 +528,6 @@ body {
   .sessions-grid { grid-template-columns: 1fr; }
 
   .hero-actions { flex-direction: column; }
-
-  .tmux-bar.bottom .tmux-info { font-size: 11px; }
 
   #boot-screen { padding: 16px; }
   #boot-inner { font-size: 13px; }
