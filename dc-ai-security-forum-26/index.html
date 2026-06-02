@@ -594,6 +594,54 @@
     }
     .org-more:hover { background: none; }
 
+    /* SCHEDULE */
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .schedule-row td {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--ink);
+      vertical-align: top;
+    }
+    .schedule-row:last-child td { border-bottom: none; }
+    .schedule-time {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-right: 32px;
+      width: 180px;
+      padding-top: 16px;
+    }
+    .schedule-event {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .schedule-row--break .schedule-event {
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .schedule-row--break .schedule-time { opacity: 0.6; }
+    .sched-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      margin-right: 10px;
+      margin-bottom: 2px;
+      border: 1px solid currentColor;
+      vertical-align: middle;
+    }
+    .sched-tag--keynote { color: var(--red); border-color: var(--red); }
+    .sched-tag--panel   { color: var(--blue-bright); border-color: var(--blue-bright); }
+    .sched-tag--workshop { color: var(--ink); border-color: var(--ink); }
+
     /* CTA */
     .cta-section {
       background: var(--ink);
@@ -771,6 +819,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#who">Who Attends</a></li>
+    <li><a href="#schedule">Schedule</a></li>
     <li><a href="#past">Past Sessions</a></li>
     <li><a href="mailto:dc26@aisecurity.forum">Contact</a></li>
   </ul>
@@ -1005,6 +1054,76 @@
       </a>
       <div class="org-cell org-more" style="grid-column: span 2;">+ more</div>
     </div>
+  </div>
+</div>
+
+<div class="section-two-col" id="schedule">
+  <div class="section-sidebar">
+    <div class="s-label"><span class="sl-r">/</span><span class="sl-b">/</span> Schedule</div>
+    <div class="s-num">04</div>
+  </div>
+  <div class="section-main">
+    <h2 class="big">Thursday, June 18, 2026</h2>
+    <table class="schedule-table">
+      <tbody>
+        <tr class="schedule-row">
+          <td class="schedule-time">9:30 a.m.</td>
+          <td class="schedule-event">Check-In</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">9:30 – 10:30 a.m.</td>
+          <td class="schedule-event">Breakfast</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">10:00 – 10:15 a.m.</td>
+          <td class="schedule-event">Opening</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">10:15 – 10:30 a.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--keynote">Keynote</span> AI Security at the Frontier</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">10:30 – 11:30 a.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> AI Security at the Frontier</td>
+        </tr>
+        <tr class="schedule-row schedule-row--break">
+          <td class="schedule-time">11:30 – 11:45 a.m.</td>
+          <td class="schedule-event">Break</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">11:45 – 1:00 p.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--workshop">Workshop</span> Hardware Security for AI</td>
+        </tr>
+        <tr class="schedule-row schedule-row--break">
+          <td class="schedule-time">1:00 – 1:30 p.m.</td>
+          <td class="schedule-event">Lunch</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">1:30 – 2:45 p.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--workshop">Workshop</span> Software Security for AI</td>
+        </tr>
+        <tr class="schedule-row schedule-row--break">
+          <td class="schedule-time">2:45 – 3:00 p.m.</td>
+          <td class="schedule-event">Break</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">3:00 – 4:15 p.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--workshop">Workshop</span> Public–Private Partnerships</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">4:20 – 5:15 p.m.</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> Securing AI as a National Security Priority</td>
+        </tr>
+        <tr class="schedule-row schedule-row--break">
+          <td class="schedule-time">5:15 – 5:30 p.m.</td>
+          <td class="schedule-event">Closing</td>
+        </tr>
+        <tr class="schedule-row">
+          <td class="schedule-time">5:30 – 9:00 p.m.</td>
+          <td class="schedule-event">Reception</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
