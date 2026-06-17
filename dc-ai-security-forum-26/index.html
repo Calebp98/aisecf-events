@@ -641,6 +641,23 @@
     .sched-tag--talk    { color: var(--red); border-color: var(--red); }
     .sched-tag--panel   { color: var(--blue-bright); border-color: var(--blue-bright); }
     .sched-tag--workshop { color: var(--ink); border-color: var(--ink); }
+    .schedule-speakers {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .schedule-speaker {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: 0.02em;
+    }
+    .schedule-speaker--mod::before {
+      content: "MOD · ";
+      opacity: 0.6;
+    }
 
     /* CTA */
     .cta-section {
@@ -1077,15 +1094,30 @@
         </tr>
         <tr class="schedule-row">
           <td class="schedule-time">10:00 – 10:15 a.m.</td>
-          <td class="schedule-event">Opening Remarks from Hosts</td>
+          <td class="schedule-event">Opening Remarks from Hosts
+            <div class="schedule-speakers">
+              <span class="schedule-speaker">Hamza Chaudhry, AI and National Security Lead, Future of Life Institute</span>
+            </div>
+          </td>
         </tr>
         <tr class="schedule-row">
           <td class="schedule-time">10:15 – 10:30 a.m.</td>
-          <td class="schedule-event"><span class="sched-tag sched-tag--talk">Talk</span> Keynote</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--talk">Talk</span> Keynote
+            <div class="schedule-speakers">
+              <span class="schedule-speaker">Sella Nevo, Director of the Center for AI Security and Technology, RAND Corporation</span>
+            </div>
+          </td>
         </tr>
         <tr class="schedule-row">
           <td class="schedule-time">10:30 – 11:30 a.m.</td>
-          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> The Stakes of AI Security</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> The Stakes of AI Security
+            <div class="schedule-speakers">
+              <span class="schedule-speaker">Sasha Baker, National Security Lead, OpenAI</span>
+              <span class="schedule-speaker">Chris Meserole, Founder, Frontier Model Forum</span>
+              <span class="schedule-speaker">Jim Mitre, Chief Research Officer, RAND Corporation</span>
+              <span class="schedule-speaker schedule-speaker--mod">Hamza Chaudhry, AI and National Security Lead, Future of Life Institute</span>
+            </div>
+          </td>
         </tr>
         <tr class="schedule-row schedule-row--break">
           <td class="schedule-time">11:30 – 11:45 a.m.</td>
@@ -1113,11 +1145,21 @@
         </tr>
         <tr class="schedule-row">
           <td class="schedule-time">4:20 – 5:15 p.m.</td>
-          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> The Future of AI Security</td>
+          <td class="schedule-event"><span class="sched-tag sched-tag--panel">Panel</span> The Future of AI Security
+            <div class="schedule-speakers">
+              <span class="schedule-speaker">Tahira Mammen, RAND Corporation</span>
+              <span class="schedule-speaker">Ike Harris, Executive Director, Frontier Security Institute</span>
+              <span class="schedule-speaker schedule-speaker--mod">Hamza Chaudhry, AI and National Security Lead, Future of Life Institute</span>
+            </div>
+          </td>
         </tr>
         <tr class="schedule-row schedule-row--break">
           <td class="schedule-time">5:15 – 5:30 p.m.</td>
-          <td class="schedule-event">Closing</td>
+          <td class="schedule-event">Closing Remarks
+            <div class="schedule-speakers">
+              <span class="schedule-speaker">Grace Werner, Vice President, Foundation for American Innovation</span>
+            </div>
+          </td>
         </tr>
         <tr class="schedule-row">
           <td class="schedule-time">5:30 – 9:00 p.m.</td>
