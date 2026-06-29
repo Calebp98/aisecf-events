@@ -15,7 +15,7 @@ const BOOT_LINES = [
   { text: "Loading kernel modules................[ OK ]", cls: "log-ok", delay: 72 },
   { text: "Mounting encrypted volumes...........[ OK ]", cls: "log-ok", delay: 80 },
   { text: "", cls: "log-dim", delay: 86 },
-  { text: "$ pip install adversarial-robustness-toolbox", cls: "log-info", delay: 92 },
+  { text: "> pip install adversarial-robustness-toolbox", cls: "log-info", delay: 92 },
   { text: "  Collecting adversarial-robustness-toolbox", cls: "log-dim", delay: 100 },
   { text: "  Downloading art-1.18.0.tar.gz (2.1 MB)", cls: "log-dim", delay: 108 },
   { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  2.1/2.1 MB  ✓", cls: "log-ok", delay: 122 },
@@ -23,7 +23,7 @@ const BOOT_LINES = [
   { text: "  Installing collected packages: art", cls: "log-dim", delay: 138 },
   { text: "  Successfully installed art-1.18.0", cls: "log-ok", delay: 146 },
   { text: "", cls: "log-dim", delay: 152 },
-  { text: "$ pip install llm-red-team torch transformers", cls: "log-info", delay: 158 },
+  { text: "> pip install llm-red-team torch transformers", cls: "log-info", delay: 158 },
   { text: "  Collecting llm-red-team", cls: "log-dim", delay: 166 },
   { text: "  Downloading llm-red-team-0.9.2.tar.gz", cls: "log-dim", delay: 174 },
   { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  5.4/5.4 MB  ✓", cls: "log-ok", delay: 188 },
@@ -36,7 +36,7 @@ const BOOT_LINES = [
   { text: "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  3.2/3.2 MB  ✓", cls: "log-ok", delay: 270 },
   { text: "  Successfully installed llm-red-team torch transformers", cls: "log-ok", delay: 278 },
   { text: "", cls: "log-dim", delay: 284 },
-  { text: "$ git clone vasf-2026-ctf --depth 1", cls: "log-info", delay: 290 },
+  { text: "> git clone vasf-2026-ctf --depth 1", cls: "log-info", delay: 290 },
   { text: "  Cloning into 'vasf-2026-ctf'...", cls: "log-dim", delay: 298 },
   { text: "  remote: Enumerating objects: 1337, done.", cls: "log-dim", delay: 308 },
   { text: "  remote: Counting objects: 100% (1337/1337), done.", cls: "log-dim", delay: 318 },
@@ -45,7 +45,7 @@ const BOOT_LINES = [
   { text: "  Resolving deltas: 100% (445/1337), done.", cls: "log-dim", delay: 350 },
   { text: "  ✓  Repo cloned. 1337 objects.", cls: "log-ok", delay: 358 },
   { text: "", cls: "log-dim", delay: 364 },
-  { text: "$ vasf-init --load-config event.toml", cls: "log-info", delay: 370 },
+  { text: "> vasf-init --load-config event.toml", cls: "log-info", delay: 370 },
   { text: "  [config] location     = Las Vegas, NV", cls: "log-dim", delay: 378 },
   { text: "  [config] date         = 2026-08-06", cls: "log-dim", delay: 386 },
   { text: "  [config] time         = 10:00 PDT", cls: "log-dim", delay: 394 },
@@ -192,12 +192,56 @@ function runQuoteCarousel() {
   setTimeout(showNext, 800);
 }
 
+function initParticles() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = 160;
+  const particles = Array.from({ length: COUNT }, () => ({
+    cx:         Math.random() * window.innerWidth,
+    cy:         Math.random() * window.innerHeight,
+    angle:      Math.random() * Math.PI * 2,
+    angleSpeed: (Math.random() - 0.5) * 0.007,
+    orbitX:     Math.random() * 280 + 60,
+    orbitY:     Math.random() * 180 + 40,
+    size:       Math.random() * 1.4 + 0.3,
+    alpha:      Math.random() * 0.3 + 0.04,
+    phase:      Math.random() * Math.PI * 2,
+  }));
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    t += 0.004;
+    for (const p of particles) {
+      p.angle += p.angleSpeed;
+      const x = p.cx + Math.cos(p.angle + t * 0.4) * p.orbitX;
+      const y = p.cy + Math.sin(p.angle * 1.3 + t * 0.25 + p.phase) * p.orbitY;
+      ctx.beginPath();
+      ctx.arc(x, y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(140,82,255,${p.alpha})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
 function initSite() {
   updateClock();
   setInterval(updateClock, 1000);
   runTypewriter();
   animateBars();
   runQuoteCarousel();
+  initParticles();
 }
 
 function updateClock() {
@@ -250,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const btn = form.querySelector(".btn-terminal");
       btn.textContent = "✓ submitted — we'll be in touch";
-      btn.style.background = "#00cc6a";
+      btn.style.background = "#7040d0";
       btn.disabled = true;
     });
   }
