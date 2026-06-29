@@ -498,6 +498,8 @@ body {
 .vkey { color: var(--blue); white-space: nowrap; min-width: 64px; font-family: var(--font-label); letter-spacing: 0.06em; }
 .vsep { color: var(--dim); padding: 0 4px; }
 .vval { color: var(--text); }
+.vval-link { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.vval-link:hover { color: var(--green); }
 .venue-note {
   margin-top: 8px;
   padding: 10px 12px;
