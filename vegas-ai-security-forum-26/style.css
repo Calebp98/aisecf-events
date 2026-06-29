@@ -127,8 +127,10 @@ body {
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
-.tmux-bar.top  { top: 0; border-bottom: 1px solid var(--border-hi); box-shadow: 0 2px 24px rgba(140,82,255,0.18); }
-.tmux-bar.bottom { bottom: 0; border-top: 1px solid var(--border); position: fixed; width: 100%; box-shadow: 0 -2px 24px rgba(140,82,255,0.12); }
+.tmux-bar.top      { top: 0; border-bottom: 1px solid var(--border-hi); box-shadow: 0 2px 24px rgba(140,82,255,0.18); }
+.tmux-bar.top-sub  { top: var(--bar-h); border-bottom: 1px solid var(--border); position: sticky; z-index: 100; }
+.tmux-bar.bottom      { bottom: var(--bar-h); border-top: 1px solid var(--border); position: fixed; width: 100%; }
+.tmux-bar.bottom-info { bottom: 0; border-top: 1px solid var(--border); position: fixed; width: 100%; box-shadow: 0 -2px 24px rgba(140,82,255,0.12); }
 
 .tmux-bar-left, .tmux-bar-right {
   display: flex;
@@ -181,7 +183,7 @@ body {
   gap: 1px;
   background: var(--border);
   flex: 1;
-  padding-bottom: var(--bar-h);
+  padding-bottom: calc(var(--bar-h) * 2);
 }
 
 /* Pane row assignments */
@@ -601,9 +603,7 @@ body {
   .tmux-bar.top .tmux-win { display: none; }
   .tmux-bar.top .tmux-win.active-win { display: block; }
   .tmux-bar.top .tmux-session { display: none; }
-  .tmux-clock { display: none; }
-  .tmux-bar.bottom .tmux-bar-right { display: none; }
-  .tmux-bar.top .tmux-info { display: none; }
+  .tmux-bar.bottom-info { display: none; }
 
   .pane-grid {
     grid-template-columns: 1fr;
