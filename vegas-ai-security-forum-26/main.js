@@ -48,7 +48,7 @@ const BOOT_LINES = [
   { text: "> vasf-init --load-config event.toml", cls: "log-info", delay: 370 },
   { text: "  [config] location     = Las Vegas, NV", cls: "log-dim", delay: 378 },
   { text: "  [config] date         = 2026-08-06", cls: "log-dim", delay: 386 },
-  { text: "  [config] time         = 10:00 PDT", cls: "log-dim", delay: 394 },
+  { text: "  [config] time         = 08:00 PDT", cls: "log-dim", delay: 394 },
   { text: "  [config] capacity     = ~200 (application-based)", cls: "log-dim", delay: 402 },
   { text: "  [config] ctf_enabled  = true", cls: "log-dim", delay: 410 },
   { text: "  [config] network_log  = false  # nice try", cls: "log-warn", delay: 418 },
@@ -247,8 +247,8 @@ function initSite() {
 function updateClock() {
   const el = document.getElementById("tmux-clock");
   if (!el) return;
-  // August 6, 2026 10:00 AM PDT (Las Vegas)
-  const target = new Date("2026-08-06T10:00:00-07:00");
+  // August 6, 2026 08:00 AM PDT (Las Vegas)
+  const target = new Date("2026-08-06T08:00:00-07:00");
   const diff = target - Date.now();
   if (diff <= 0) {
     el.textContent = "[ LIVE ]";
