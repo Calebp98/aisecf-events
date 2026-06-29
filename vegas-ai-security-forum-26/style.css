@@ -132,6 +132,29 @@ body {
 .tmux-clock { color: var(--amber); font-weight: 500; }
 .tmux-mode { color: var(--green); font-weight: 700; background: #002a15; padding: 0 6px; }
 .tmux-path { color: var(--blue); }
+
+.bar-cta {
+  font-size: 11px;
+  font-family: var(--font);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1px 8px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s;
+}
+.bar-cta-cfp {
+  color: var(--amber);
+  border: 1px solid #664400;
+  background: #1a1000;
+}
+.bar-cta-cfp:hover { background: #2a1a00; border-color: var(--amber); }
+.bar-cta-apply {
+  color: #000;
+  background: var(--green);
+  border: 1px solid var(--green);
+}
+.bar-cta-apply:hover { background: var(--green-d); border-color: var(--green-d); }
 .bar-link { color: var(--muted); text-decoration: none; }
 .bar-link:hover { color: var(--green); }
 
@@ -154,6 +177,7 @@ body {
 #pane-theme        { grid-column: 1; grid-row: 2; }
 #pane-sessions     { grid-column: 1; grid-row: 3; }
 #speakers          { grid-column: 2; grid-row: 3; }
+#cfp               { grid-column: 1 / -1; grid-row: 4; }
 
 /* ============================================================
    PANE BASE STYLES
@@ -498,6 +522,52 @@ body {
 .form-note { color: var(--dim); font-size: 13px; }
 
 /* ============================================================
+   CFP PANE
+   ============================================================ */
+.cfp-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 24px;
+}
+
+.cfp-body > .comment { grid-column: 1 / -1; margin-bottom: -12px; }
+
+.cfp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-column: 1 / -1;
+}
+
+.cfp-deadline { color: var(--amber); font-weight: 700; }
+.cfp-status-open { color: var(--green); font-weight: 700; letter-spacing: 0.05em; }
+
+.cfp-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cfp-text {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.cfp-topics { display: flex; flex-direction: column; gap: 10px; }
+
+.cfp-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-self: start;
+  padding-top: 28px;
+}
+
+/* ============================================================
    SCROLLBARS
    ============================================================ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -515,6 +585,7 @@ body {
   .tmux-bar.top .tmux-session { display: none; }
   .tmux-clock { display: none; }
   .tmux-bar.bottom .tmux-bar-right { display: none; }
+  .tmux-bar.top .tmux-info { display: none; }
 
   .pane-grid {
     grid-template-columns: 1fr;
@@ -526,6 +597,12 @@ body {
   #pane-theme       { grid-column: 1; grid-row: 3; }
   #pane-sessions    { grid-column: 1; grid-row: 4; }
   #speakers         { grid-column: 1; grid-row: 5; }
+  #cfp              { grid-column: 1; grid-row: 6; }
+
+  .cfp-body {
+    grid-template-columns: 1fr;
+  }
+  .cfp-actions { padding-top: 0; }
 
   .ascii-art { font-size: 7px; }
 

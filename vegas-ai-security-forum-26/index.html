@@ -32,9 +32,12 @@
       <a href="#sessions" class="tmux-win">1:sessions</a>
       <a href="#speakers" class="tmux-win">2:speakers</a>
       <a href="#venue" class="tmux-win">3:venue</a>
+      <a href="#cfp" class="tmux-win">4:cfp</a>
     </div>
     <div class="tmux-bar-right">
       <span class="tmux-info">LAS VEGAS · AUG 2026</span>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZb8CGrP1u91kl7Uwgzt8gEY4e9GQzo6ELeD_75BUVhPUatg/viewform" target="_blank" class="bar-cta bar-cta-cfp">submit talk ↗</a>
+      <a href="https://airtable.com/app3DgCuagI4u7gqc/pag6JHwWS4bWZWbQl/form" target="_blank" class="bar-cta bar-cta-apply">apply to attend ↗</a>
       <span class="tmux-clock" id="tmux-clock"></span>
     </div>
   </div>
@@ -232,6 +235,40 @@
       </div>
     </div>
 
+    <!-- PANE: CALL FOR PAPERS -->
+    <div class="pane pane-cfp" id="cfp">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat cfp.md</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body cfp-body">
+        <p class="comment"># Call for Papers</p>
+        <div class="cfp-meta">
+          <div class="venue-line"><span class="vkey">deadline</span><span class="vsep">=</span><span class="vval cfp-deadline">June 30, 2026</span></div>
+          <div class="venue-line"><span class="vkey">status  </span><span class="vsep">=</span><span class="vval"><span class="cfp-status-open">● OPEN</span></span></div>
+        </div>
+        <div class="cfp-content">
+          <p class="cfp-text">We're looking for talks at the intersection of AI and security — offense and defense, technical and policy, research and practitioner. If you're working on something, we want to hear about it.</p>
+          <div class="cfp-topics">
+            <p class="comment"># Topics of interest (non-exhaustive)</p>
+            <ul class="theme-list">
+              <li><span class="bullet">→</span> Model weight security and exfiltration</li>
+              <li><span class="bullet">→</span> Adversarial ML and AI red teaming</li>
+              <li><span class="bullet">→</span> Cyber capabilities of AI systems</li>
+              <li><span class="bullet">→</span> Supply chain and infrastructure threats</li>
+              <li><span class="bullet">→</span> AI insider risk and governance</li>
+              <li><span class="bullet">→</span> Policy, regulation, and national security</li>
+              <li><span class="bullet">→</span> Hardware verification and trusted compute</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cfp-actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZb8CGrP1u91kl7Uwgzt8gEY4e9GQzo6ELeD_75BUVhPUatg/viewform" target="_blank" class="btn-terminal">./submit --cfp</a>
+          <span class="spaces-warning"><span class="prompt-sym">!</span> Deadline: June 30, 2026</span>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /pane-grid -->
 
   <!-- TMUX STATUS BAR BOTTOM -->
@@ -239,9 +276,11 @@
     <div class="tmux-bar-left">
       <span class="tmux-mode">[NORMAL]</span>
       <span class="tmux-path">~/aisf/vegas-2026</span>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZb8CGrP1u91kl7Uwgzt8gEY4e9GQzo6ELeD_75BUVhPUatg/viewform" target="_blank" class="bar-cta bar-cta-cfp">submit talk ↗</a>
+      <a href="https://airtable.com/app3DgCuagI4u7gqc/pag6JHwWS4bWZWbQl/form" target="_blank" class="bar-cta bar-cta-apply">apply to attend ↗</a>
     </div>
     <div class="tmux-bar-right">
-      <span class="tmux-info">Fiscally sponsored by Hack Club (501(c)(3), EIN 81-2908499) · questions: <a href="mailto:caleb@aisecurityforum.com" class="bar-link">caleb@aisecurityforum.com</a></span>
+      <span class="tmux-info">Fiscally sponsored by Hack Club (501(c)(3), EIN 81-2908499) · questions: <a href="mailto:lv-team@aisecurity.forum" class="bar-link">lv-team@aisecurity.forum</a></span>
     </div>
   </div>
 
