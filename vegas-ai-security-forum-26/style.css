@@ -193,6 +193,7 @@ body {
 #pane-sessions     { grid-column: 1; grid-row: 3; }
 #speakers          { grid-column: 2; grid-row: 3; }
 #cfp               { grid-column: 1 / -1; grid-row: 4; }
+#sponsors          { grid-column: 1 / -1; grid-row: 5; }
 
 /* ============================================================
    PANE BASE STYLES
@@ -590,6 +591,34 @@ body {
 }
 
 /* ============================================================
+   SPONSORS PANE
+   ============================================================ */
+.sponsors-body { display: flex; flex-direction: column; gap: 16px; }
+
+.sponsors-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px 56px;
+  padding: 4px 0 8px;
+}
+
+.sponsor {
+  display: inline-flex;
+  align-items: center;
+}
+.sponsor img {
+  height: 26px;
+  width: auto;
+  max-width: 200px;
+  /* render every logo as a uniform muted-white silhouette to match the terminal theme */
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+  transition: opacity 0.15s;
+}
+.sponsor:hover img { opacity: 0.9; }
+
+/* ============================================================
    SCROLLBARS
    ============================================================ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -618,6 +647,7 @@ body {
   #pane-sessions    { grid-column: 1; grid-row: 4; }
   #speakers         { grid-column: 1; grid-row: 5; }
   #cfp              { grid-column: 1; grid-row: 6; }
+  #sponsors         { grid-column: 1; grid-row: 7; }
 
   .cfp-body {
     grid-template-columns: 1fr;
