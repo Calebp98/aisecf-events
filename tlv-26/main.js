@@ -37,6 +37,7 @@ function runBoot() {
       setTimeout(() => {
         boot.classList.add("fade-out");
         ["statusbar", "site", "footbar"].forEach(id => document.getElementById(id).classList.remove("hidden"));
+        document.body.classList.add("power-on");   // CRT switch-on flash
         requestAnimationFrame(() => requestAnimationFrame(() =>
           document.getElementById("site").classList.add("visible")));
         setTimeout(() => boot.remove(), 220);
