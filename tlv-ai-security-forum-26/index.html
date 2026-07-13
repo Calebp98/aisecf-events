@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tel Aviv AI Security Forum '26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- BOOT SCREEN -->
+<div id="boot-screen">
+  <div id="boot-inner">
+    <div id="boot-log"></div>
+    <div id="cursor-line">
+      <span id="boot-prompt">&gt; </span><span id="boot-cursor">█</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="site" class="hidden">
+
+  <!-- TMUX STATUS BAR TOP -->
+  <div class="tmux-bar top">
+    <div class="tmux-bar-left">
+      <a href="https://aisecurity.forum" class="bar-link tmux-session">~/aisecurity.forum</a>
+      <span class="tmux-session">[aisf-tlv-2026]</span>
+      <a href="#pane-hero" class="tmux-win active-win">0:main</a>
+      <a href="#sessions" class="tmux-win">1:sessions</a>
+      <a href="#speakers" class="tmux-win">2:speakers</a>
+      <a href="#venue" class="tmux-win">3:venue</a>
+      <a href="#cfp" class="tmux-win">4:cfp</a>
+    </div>
+    <div class="tmux-bar-right">
+      <a href="https://heron.org" target="_blank" class="bar-heron" title="Presented by Heron">
+        <img src="assets/heron/heron-wordmark.svg" alt="Heron" />
+      </a>
+      <span class="tmux-info">TEL AVIV · NOV 2026</span>
+    </div>
+  </div>
+
+  <!-- TMUX SUB-BAR: CTAs + COUNTDOWN -->
+  <div class="tmux-bar top-sub">
+    <div class="tmux-bar-left">
+      <a href="#cfp" class="bar-cta bar-cta-cfp">submit talk ↗</a>
+      <a href="#apply" class="bar-cta bar-cta-apply">apply to attend ↗</a>
+    </div>
+    <div class="tmux-bar-right">
+      <span class="tmux-clock" id="tmux-clock"></span>
+    </div>
+  </div>
+
+  <!-- LAYOUT GRID -->
+  <div class="pane-grid">
+
+    <!-- PANE: HERO -->
+    <div class="pane pane-hero" id="pane-hero">
+      <div class="pane-title-bar">
+        <span class="pane-label">~/aisf/tel-aviv/welcome</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body hero-body">
+        <div class="hero-ascii">
+<pre class="ascii-art">
+████████╗██╗    ██╗   ██╗
+╚══██╔══╝██║    ██║   ██║
+   ██║   ██║    ██║   ██║
+   ██║   ██║    ╚██╗ ██╔╝
+   ██║   ███████╗╚████╔╝
+   ╚═╝   ╚══════╝ ╚═══╝
+</pre>
+<pre class="ascii-sub">AI SECURITY FORUM · TEL AVIV · 2026</pre>
+        </div>
+        <div class="hero-prompt">
+          <p class="prompt-line"><span class="prompt-sym">❯</span> <span class="typed-text" data-text="Security research, engineering, and policy."></span><span class="blink-cursor">▋</span></p>
+          <p class="hero-desc">A day bringing together researchers, engineers, and policymakers<br/>working to secure powerful AI systems — in Tel Aviv.</p>
+          <div class="hero-actions">
+            <a href="#apply" class="btn-terminal">./apply --now</a>
+            <a href="#cfp" class="btn-ghost">./submit --talk</a>
+            <span class="spaces-warning"><span class="prompt-sym">!</span> Spaces are limited — apply early to avoid disappointment.</span>
+          </div>
+          <p class="prompt-line hero-cmd"><span class="prompt-sym">❯</span> <a href="#sessions" class="cmd-link">cat sessions.md</a></p>
+          <div class="hero-venue" id="venue">
+            <div class="venue-line"><span class="vkey">location</span><span class="vsep">=</span><span class="vval">Tel Aviv, Israel</span></div>
+            <div class="venue-line"><span class="vkey">date    </span><span class="vsep">=</span><span class="vval">Sunday, November 22, 2026</span></div>
+            <div class="venue-line"><span class="vkey">capacity</span><span class="vsep">=</span><span class="vval">application-based</span></div>
+            <div class="venue-line"><span class="vkey">format  </span><span class="vsep">=</span><span class="vval">full day, ends ~8 PM · talks, workshops, one-on-ones</span></div>
+            <div class="venue-line"><span class="vkey">meals   </span><span class="vsep">=</span><span class="vval">lunch, dinner, and coffee provided</span></div>
+            <div class="venue-line"><span class="vkey">venue   </span><span class="vsep">=</span><span class="vval"><a href="https://www.tamuseum.org.il/en/" target="_blank" class="vval-link">Tel Aviv Museum of Art</a> · <a href="https://maps.app.goo.gl/8Qw6qk7Yx6r9nq5A9" target="_blank" class="vval-link">map ↗</a></span></div>
+          </div>
+          <div class="hero-quotes">
+            <p class="comment"># what attendees say</p>
+            <div class="testimonial">
+              <p class="t-text"><span id="quote-text"></span></p>
+              <span class="t-attr" id="quote-attr"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: LIVE STATS -->
+    <div class="pane pane-stats" id="pane-stats">
+      <div class="pane-title-bar">
+        <span class="pane-label">htop — tasf-stats</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body stats-body">
+        <div class="stat-row">
+          <span class="stat-label">ATTENDEES</span>
+          <span class="stat-bar"><span class="stat-fill" style="width:78%"></span></span>
+          <span class="stat-val">~150</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ORGS     </span>
+          <span class="stat-bar"><span class="stat-fill" style="width:64%"></span></span>
+          <span class="stat-val">40+</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-tags">
+          <span class="tag">model-weight-security</span>
+          <span class="tag">cyber-evals</span>
+          <span class="tag">adversarial-ml</span>
+          <span class="tag">supply-chain</span>
+          <span class="tag">hardware-verification</span>
+          <span class="tag">ai-insider-risk</span>
+          <span class="tag">threat-models</span>
+          <span class="tag">policy</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="t-text">"The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other."</p>
+            <span class="t-attr">— Security Researcher, AI Lab</span>
+          </div>
+          <div class="testimonial">
+            <p class="t-text">"I left with a clearer sense of the threat landscape and a network of people I can actually call when things go sideways."</p>
+            <span class="t-attr">— Policy Advisor, National Security Community</span>
+          </div>
+          <div class="testimonial">
+            <p class="t-text">"The forum helped us shape our work and product in some really meaningful ways that helped answer some really hard technical questions about what the future of Security was going to look like."</p>
+            <span class="t-attr">— Will Pearce, CEO @ Dreadnode</span>
+          </div>
+          <div class="testimonial">
+            <p class="t-text">"The Forum is where I've been able to connect to the beating heart of the AI Security community."</p>
+            <span class="t-attr">— Jason Clinton, Deputy CISO @ Anthropic</span>
+          </div>
+          <div class="testimonial">
+            <p class="t-text">"Some of the most useful conversations I've had about AI — with both technical and policy people — started at AISF. It's one of the few venues that consistently brings that range of people into the same room."</p>
+            <span class="t-attr">— Kristian Ronn, CEO @ Lucid Computing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: THEME -->
+    <div class="pane pane-theme" id="pane-theme">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat theme.md</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body theme-body">
+        <p class="comment"># About the Forum</p>
+        <p class="theme-text">We believe there is a significant chance transformative AI will be developed in the next few years. <span class="hl">Securing those systems is on the critical path</span> to preventing global catastrophe — and to ensuring the benefits of powerful AI are broadly realized.</p>
+        <p class="theme-text">Tel Aviv AI Security Forum '26 brings together <span class="hl">security engineers and researchers, policymakers, entrepreneurs, and members of the national security community</span> to drive thought partnership and advance the field of AI security.</p>
+        <p class="theme-text">The Forum is presented by <a href="https://heron.org" target="_blank" class="hl-link">Heron</a> — a gateway into the local AI security community and its programs.</p>
+        <p class="comment"># Format</p>
+        <ul class="theme-list">
+          <li><span class="bullet">→</span> Application-based attendance</li>
+          <li><span class="bullet">→</span> Keynote talks, workshops, and fireside chats</li>
+          <li><span class="bullet">→</span> Parallel seminar rooms, one-on-ones, and meals</li>
+          <li><span class="bullet">→</span> A full day, ending with dinner at ~8 PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PANE: SESSIONS + SPEAKERS -->
+    <div class="pane pane-sessions" id="sessions">
+      <div class="pane-title-bar">
+        <span class="pane-label">git log --format="%an" participants/</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body sessions-body">
+        <div class="sessions-tba">
+          <div class="tba-card">
+            <span class="tba-cursor">_</span>
+            <h3 class="tba-title">Sessions to be announced</h3>
+            <p class="tba-desc">Session details and speakers will be published closer to the event. Apply to attend to be notified when the program is released.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: VENUE DETAIL -->
+    <div class="pane pane-participants" id="speakers">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat venue.md</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body participants-body">
+        <p class="comment"># Venue — Tel Aviv Museum of Art</p>
+        <p class="theme-text">A landmark of contemporary architecture in the heart of Tel Aviv, hosting the Forum across two main floors.</p>
+        <ul class="theme-list">
+          <li><span class="bullet">→</span> Main auditorium for keynotes and plenaries</li>
+          <li><span class="bullet">→</span> Two parallel seminar rooms (~45 seats each)</li>
+          <li><span class="bullet">→</span> Naturally-lit foyer for mingling and coffee</li>
+          <li><span class="bullet">→</span> Dedicated space for one-on-ones</li>
+          <li><span class="bullet">→</span> Food and main mingling area with auditorium access</li>
+        </ul>
+        <p class="comment"># Past Attendees Include People From</p>
+        <div class="orgs-grid">
+          <a href="https://anthropic.com" target="_blank" class="org">Anthropic</a>
+          <a href="https://openai.com" target="_blank" class="org">OpenAI</a>
+          <a href="https://deepmind.google" target="_blank" class="org">Google DeepMind</a>
+          <a href="https://cisa.gov" target="_blank" class="org">CISA</a>
+          <a href="https://darpa.mil" target="_blank" class="org">DARPA</a>
+          <a href="https://csail.mit.edu" target="_blank" class="org">MIT CSAIL</a>
+          <a href="https://cylab.cmu.edu" target="_blank" class="org">CMU CyLab</a>
+          <a href="https://hai.stanford.edu" target="_blank" class="org">Stanford HAI</a>
+          <a href="https://rand.org" target="_blank" class="org">RAND Corp</a>
+          <a href="https://nist.gov" target="_blank" class="org">NIST</a>
+          <a href="https://redwoodresearch.org" target="_blank" class="org">Redwood Research</a>
+        </div>
+        <p class="comment"># Attendee Breakdown (Prior Event)</p>
+        <div class="breakdown-list">
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">government / national security / think tanks</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">25–30%</span><span class="breakdown-label">AI companies and research institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">other tech companies</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">10–15%</span><span class="breakdown-label">academic institutions</span></div>
+          <div class="breakdown-row"><span class="breakdown-pct">15–20%</span><span class="breakdown-label">independent researchers, consultants, nonprofits</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: CALL FOR PAPERS -->
+    <div class="pane pane-cfp" id="cfp">
+      <div class="pane-title-bar">
+        <span class="pane-label">cat cfp.md</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body cfp-body">
+        <p class="comment"># Call for Papers</p>
+        <div class="cfp-meta">
+          <div class="venue-line"><span class="vkey">deadline</span><span class="vsep">=</span><span class="vval cfp-deadline">rolling — apply ASAP</span></div>
+          <div class="venue-line"><span class="vkey">status  </span><span class="vsep">=</span><span class="vval"><span class="cfp-status-open">● OPEN</span></span></div>
+        </div>
+        <div class="cfp-content">
+          <p class="cfp-text">We're looking for talks at the intersection of AI and security — offense and defense, technical and policy, research and practitioner. If you're working on something, we want to hear about it.</p>
+          <div class="cfp-topics">
+            <p class="comment"># Topics of interest (non-exhaustive)</p>
+            <ul class="theme-list">
+              <li><span class="bullet">→</span> Model weight security and exfiltration</li>
+              <li><span class="bullet">→</span> Adversarial ML and AI red teaming</li>
+              <li><span class="bullet">→</span> Cyber capabilities of AI systems</li>
+              <li><span class="bullet">→</span> Supply chain and infrastructure threats</li>
+              <li><span class="bullet">→</span> AI insider risk and governance</li>
+              <li><span class="bullet">→</span> Policy, regulation, and national security</li>
+              <li><span class="bullet">→</span> Hardware verification and trusted compute</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cfp-actions">
+          <a href="#apply" class="btn-terminal">./submit --cfp</a>
+          <span class="spaces-warning"><span class="prompt-sym">!</span> Rolling deadline — spots fill fast.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: APPLY -->
+    <div class="pane pane-cfp" id="apply">
+      <div class="pane-title-bar">
+        <span class="pane-label">./register</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body cfp-body">
+        <p class="comment"># Register</p>
+        <div class="cfp-content">
+          <p class="cfp-text">Attendance is application-based. Apply to attend, or submit a talk for the program. Registration links are being finalized — check back shortly, or reach out to the team below.</p>
+        </div>
+        <div class="cfp-actions">
+          <a href="mailto:tlv-team@aisecurity.forum" class="btn-terminal">./contact --team</a>
+          <span class="spaces-warning"><span class="prompt-sym">!</span> Registration form coming soon.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE: PRESENTED BY -->
+    <div class="pane pane-sponsors" id="sponsors">
+      <div class="pane-title-bar">
+        <span class="pane-label">ls presented-by/</span>
+        <span class="pane-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+      </div>
+      <div class="pane-body sponsors-body">
+        <p class="comment"># Presented by</p>
+        <div class="sponsors-row">
+          <a href="https://heron.org" target="_blank" class="sponsor sponsor-heron"><img src="assets/heron/heron-wordmark.svg" alt="Heron" /></a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-grid -->
+
+  <!-- TMUX STATUS BAR BOTTOM -->
+  <div class="tmux-bar bottom">
+    <div class="tmux-bar-left">
+      <span class="tmux-mode">[NORMAL]</span>
+      <span class="tmux-path">~/aisf/tlv-2026</span>
+    </div>
+  </div>
+
+  <!-- TMUX INFO BAR: FISCAL SPONSORSHIP -->
+  <div class="tmux-bar bottom-info">
+    <div class="tmux-bar-left">
+      <span class="tmux-info">Presented by Heron · questions: <a href="mailto:tlv-team@aisecurity.forum" class="bar-link">tlv-team@aisecurity.forum</a></span>
+    </div>
+  </div>
+
+</div><!-- /site -->
+
+<script src="main.js"></script>
+</body>
+</html>

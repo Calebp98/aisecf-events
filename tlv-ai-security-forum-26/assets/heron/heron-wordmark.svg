@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" role="img" aria-label="Heron">
+  <!-- PLACEHOLDER heron wordmark — swap for the official Heron logo asset -->
+  <g fill="currentColor">
+    <!-- minimal heron glyph -->
+    <path d="M10 40 C10 26 16 18 26 16 C20 20 20 28 24 30 C30 24 30 12 26 6 C36 12 38 26 30 34 C26 38 20 40 14 40 Z"/>
+    <circle cx="27.5" cy="7.5" r="2"/>
+    <path d="M29 8 L40 4" stroke="currentColor" stroke-width="1.6" fill="none"/>
+  </g>
+  <text x="50" y="33" font-family="'Space Mono', monospace" font-size="24" font-weight="700" letter-spacing="2" fill="currentColor">HERON</text>
+</svg>
