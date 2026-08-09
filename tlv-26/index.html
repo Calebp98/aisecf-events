@@ -36,14 +36,13 @@
     <nav class="sb-nav">
       <a href="#main" class="sb-win active">main</a>
       <a href="#about">about</a>
-      <a href="#venue">venue</a>
       <a href="#cfp">cfp</a>
-      <a href="#apply">apply</a>
+      <a href="https://heron.fillout.com/t/6oLEhvYazcus" target="_blank">apply</a>
     </nav>
   </div>
   <div class="sb-right">
     <span class="sb-clock" id="clock"></span>
-    <a href="https://heron.org" target="_blank" class="sb-heron" title="Presented by Heron">
+    <a href="https://www.heronsec.ai/" target="_blank" class="sb-heron" title="Presented by Heron">
       <img src="assets/heron/heron-logo-phosphor.png" alt="Heron" />
     </a>
   </div>
@@ -67,12 +66,11 @@
 
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> whoami</p>
       <p class="out hero-id"><span class="typed" data-text="Security research, engineering, and policy."></span><span class="cur">▋</span></p>
-      <p class="out hero-desc">A one-day gathering of the researchers, engineers, and policymakers<br/>working to secure powerful AI systems — in Tel Aviv.</p>
+      <p class="out hero-desc">300 researchers, engineers, and entrepreneurs figuring out how to secure AI<br/>on the path to superintelligence.</p>
 
       <div class="actions">
-        <a href="#apply" class="btn">./apply --now</a>
+        <a href="https://heron.fillout.com/t/6oLEhvYazcus" target="_blank" class="btn">./express --interest</a>
         <a href="#cfp" class="btn ghost">./submit --talk</a>
-        <span class="warn">! spaces are limited — apply early to avoid disappointment.</span>
       </div>
     </section>
 
@@ -83,7 +81,7 @@
         <div class="kv"><span class="k">location</span><span class="eq">=</span><span class="v">Tel Aviv, Israel</span></div>
         <div class="kv"><span class="k">date</span><span class="eq">=</span><span class="v">Sunday, November 22, 2026</span></div>
         <div class="kv"><span class="k">capacity</span><span class="eq">=</span><span class="v">~300 (application-based)</span></div>
-        <div class="kv"><span class="k">format</span><span class="eq">=</span><span class="v">9 AM – 8 PM · talks, workshops</span></div>
+        <div class="kv"><span class="k">format</span><span class="eq">=</span><span class="v">9 AM – 7 PM · talks, workshops</span></div>
         <div class="kv"><span class="k">meals</span><span class="eq">=</span><span class="v">Breakfast, lunch, light dinner (and snacks) provided</span></div>
         <div class="kv"><span class="k">venue</span><span class="eq">=</span><span class="v"><a href="https://www.tamuseum.org.il/en/" target="_blank">Tel Aviv Museum of Art</a> · <a href="https://maps.app.goo.gl/Mg1MZFnEeJ6qTXkHA" target="_blank">map ↗</a></span></div>
         <div class="kv"><span class="k">host</span><span class="eq">=</span><span class="v">presented by Heron</span></div>
@@ -95,19 +93,34 @@
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat about.md</p>
       <div class="out prose">
         <p class="comment"># About the Forum</p>
-        <p>We believe there is a significant chance transformative AI will be developed in the next few years. <span class="hl">Securing those systems is on the critical path</span> to preventing global catastrophe — and to ensuring the benefits of powerful AI are broadly realized.</p>
-        <p>The Tel Aviv AI Security Forum brings together <span class="hl">security engineers and researchers, policymakers, entrepreneurs, and members of the national security community</span> to drive thought partnership and advance the field of AI security.</p>
+        <p>Frontier AI models are rapidly evolving into autonomous agents capable of multi-step, real-world execution. Recent incidents where evaluation models broke sandbox boundaries to exploit external infrastructure on Hugging Face highlight a critical reality: <span class="hl">capability scaling without matching security infrastructure creates severe vulnerabilities</span>, making frontier security essential to preventing catastrophic control failures.</p>
+        <p>The Tel Aviv AI Security Forum is an intimate gathering of <span class="hl">300 leading cybersecurity researchers, engineers, and entrepreneurs</span> figuring out how to secure AI on the path to superintelligence.</p>
+        <p class="comment"># Planned topics</p>
+        <ul class="list two-col">
+          <li><span class="arr">→</span> Threat models, AI worldviews, and plans for dealing with ASI</li>
+          <li><span class="arr">→</span> AI Control and protocols for using untrusted AI</li>
+          <li><span class="arr">→</span> Security for treaties, verification, and hardware</li>
+          <li><span class="arr">→</span> Internal deployment security risks</li>
+          <li><span class="arr">→</span> SL5 - Nation-State Grade Security for Frontier AI</li>
+          <li><span class="arr">→</span> Poisoning, secret loyalties, and backdoors</li>
+        </ul>
+        <p>Also on our radar:</p>
+        <ul class="list two-col">
+          <li><span class="arr">→</span> Launching organisations</li>
+          <li><span class="arr">→</span> A beginner's guide to getting involved</li>
+          <li><span class="arr">→</span> Funding pathways for frontier AI security research and startups</li>
+        </ul>
         <p class="comment"># Format</p>
         <ul class="list">
           <li><span class="arr">→</span> Application-based attendance, ~300 attendees</li>
           <li><span class="arr">→</span> Keynote talks, workshops, and fireside chats</li>
           <li><span class="arr">→</span> Parallel seminar rooms, one-on-ones, and meals</li>
-          <li><span class="arr">→</span> A full day, 9 AM – 8 PM, ending with a light dinner</li>
+          <li><span class="arr">→</span> A full day, 9 AM – 7 PM, ending with a light dinner and a cocktail!</li>
         </ul>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS (hidden per request — content kept for easy re-enable)
     <section class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat testimonials.txt</p>
       <div class="out quotes">
@@ -116,8 +129,9 @@
         <blockquote>"Some of the most useful conversations I've had about AI — with both technical and policy people — started at AISF."<cite>— Kristian Ronn, CEO @ Lucid Computing</cite></blockquote>
       </div>
     </section>
+    -->
 
-    <!-- SESSIONS -->
+    <!-- SESSIONS (hidden per request — content kept for easy re-enable)
     <section id="sessions" class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> ls sessions/</p>
       <div class="out">
@@ -128,8 +142,9 @@
         </div>
       </div>
     </section>
+    -->
 
-    <!-- VENUE -->
+    <!-- VENUE (hidden per request — content kept for easy re-enable)
     <section id="venue" class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat venue.md</p>
       <div class="out prose">
@@ -142,20 +157,16 @@
           <li><span class="arr">→</span> Dedicated space for one-on-ones</li>
           <li><span class="arr">→</span> Food and main mingling area with auditorium access</li>
         </ul>
-        <p class="comment"># Past attendees include people from</p>
-        <div class="orgs">
-          <a href="https://anthropic.com" target="_blank">Anthropic</a>
-          <a href="https://openai.com" target="_blank">OpenAI</a>
-          <a href="https://deepmind.google" target="_blank">Google DeepMind</a>
-          <a href="https://cisa.gov" target="_blank">CISA</a>
-          <a href="https://darpa.mil" target="_blank">DARPA</a>
-          <a href="https://csail.mit.edu" target="_blank">MIT CSAIL</a>
-          <a href="https://cylab.cmu.edu" target="_blank">CMU CyLab</a>
-          <a href="https://hai.stanford.edu" target="_blank">Stanford HAI</a>
-          <a href="https://rand.org" target="_blank">RAND Corp</a>
-          <a href="https://nist.gov" target="_blank">NIST</a>
-          <a href="https://redwoodresearch.org" target="_blank">Redwood Research</a>
-        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- PAST ATTENDEES -->
+    <section id="attendees" class="blk">
+      <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat attendees.txt</p>
+      <div class="out prose">
+        <p class="comment"># Speakers at past events included people from:</p>
+        <p>Open AI, Anthropic, RAND, Redwood, Meta, Deepmind, Irregular, NVIDIA and others.</p>
       </div>
     </section>
 
@@ -163,20 +174,10 @@
     <section id="cfp" class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat cfp.md</p>
       <div class="out prose">
-        <p class="comment"># Call for Papers &nbsp;<span class="status-open">● OPEN</span> &nbsp;·&nbsp; deadline = rolling — apply ASAP</p>
+        <p class="comment"># Call for Talks &nbsp;<span class="status-open">● OPEN</span> &nbsp;·&nbsp; deadline = rolling — apply ASAP</p>
         <p>We're looking for talks at the intersection of AI and security — offense and defense, technical and policy, research and practitioner. If you're working on something, we want to hear about it.</p>
-        <p class="comment"># Topics of interest (non-exhaustive)</p>
-        <ul class="list two-col">
-          <li><span class="arr">→</span> Model weight security and exfiltration</li>
-          <li><span class="arr">→</span> Adversarial ML and AI red teaming</li>
-          <li><span class="arr">→</span> Cyber capabilities of AI systems</li>
-          <li><span class="arr">→</span> Supply chain and infrastructure threats</li>
-          <li><span class="arr">→</span> AI insider risk and governance</li>
-          <li><span class="arr">→</span> Policy, regulation, and national security</li>
-          <li><span class="arr">→</span> Hardware verification and trusted compute</li>
-        </ul>
         <div class="actions">
-          <a href="#apply" class="btn">./submit --cfp</a>
+          <a href="https://heron.fillout.com/t/62iuY4DnDyus" target="_blank" class="btn">./submit --talk</a>
           <span class="warn">! rolling deadline — spots fill fast.</span>
         </div>
       </div>
@@ -186,9 +187,9 @@
     <section id="apply" class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> ./register</p>
       <div class="out prose">
-        <p>Attendance is application-based. Apply to attend, or submit a talk for the program. Registration links are being finalized — check back shortly, or reach out to the team below.</p>
+        <p>Attendance is application-based. Express your interest to get early application access.</p>
         <div class="actions">
-          <a href="mailto:tlv-team@aisecurity.forum" class="btn">./contact --team</a>
+          <a href="mailto:hello@heronsec.ai" class="btn">./contact --team</a>
           <span class="warn">! registration form coming soon.</span>
         </div>
       </div>
@@ -198,10 +199,10 @@
     <section class="blk">
       <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat presented-by</p>
       <div class="out presented">
-        <a href="https://heron.org" target="_blank" class="heron-mark">
+        <a href="https://www.heronsec.ai/" target="_blank" class="heron-mark">
           <img src="assets/heron/heron-logo-phosphor.png" alt="Heron" />
         </a>
-        <p class="presented-note">The Tel Aviv AI Security Forum is presented by <a href="https://heron.org" target="_blank">Heron</a> — a gateway into the local AI security community and its programs.</p>
+        <p class="presented-note">The Tel Aviv AI Security Forum is presented by <a href="https://www.heronsec.ai/" target="_blank">Heron</a> — a gateway into the local AI security community and its programs.</p>
       </div>
     </section>
 
@@ -211,7 +212,7 @@
 <!-- FOOTER STATUS -->
 <footer id="footbar" class="hidden">
   <span class="fb-mode">[NORMAL]</span>
-  <span class="fb-info">Presented by Heron · questions: <a href="mailto:tlv-team@aisecurity.forum">tlv-team@aisecurity.forum</a></span>
+  <span class="fb-info">Presented by Heron · questions: <a href="mailto:hello@heronsec.ai">hello@heronsec.ai</a></span>
 </footer>
 
 <script src="main.js"></script>
