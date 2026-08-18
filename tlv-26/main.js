@@ -15,7 +15,7 @@ const BOOT_LINES = [
   { t: "  [config] location = Tel Aviv, Israel", c: "log-dim", d: 76 },
   { t: "  [config] venue    = Tel Aviv Museum of Art", c: "log-dim", d: 84 },
   { t: "  [config] date     = 2026-11-22 (Sunday)", c: "log-dim", d: 92 },
-  { t: "  [config] hours    = 09:00 – 20:00 IST", c: "log-dim", d: 100 },
+  { t: "  [config] hours    = 09:00 – 19:00 IST", c: "log-dim", d: 100 },
   { t: "  [config] capacity = ~300 (application-based)", c: "log-dim", d: 108 },
   { t: "  [config] host     = Heron", c: "log-dim", d: 116 },
   { t: "  [config] threat_level = elevated", c: "log-warn", d: 124 },
@@ -92,7 +92,13 @@ function updateClock() {
 /* highlight the active section in the status bar nav */
 function initScrollSpy() {
   const links = [...document.querySelectorAll(".sb-nav a")];
-  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute("href")) })).filter(x => x.sec);
+  const map = links
+    .map(a => {
+      const href = a.getAttribute("href") || "";
+      if (!href.startsWith("#")) return null; // skip external links (e.g. apply form)
+      return { a, sec: document.querySelector(href) };
+    })
+    .filter(x => x && x.sec);
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
