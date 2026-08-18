@@ -285,11 +285,12 @@ blockquote cite { display: block; color: var(--p-dim); font-style: normal; font-
 
 /* orgs */
 .orgs { display: flex; flex-wrap: wrap; gap: 6px; }
-.orgs a {
+.orgs a, .orgs span {
   font-size: 13px; padding: 3px 9px;
   border: 1px solid var(--edge);
   color: var(--p); text-decoration: none;
   background: var(--panel);
+  display: inline-block;
 }
 .orgs a:hover { border-color: var(--p); color: var(--p-hi); text-shadow: var(--glow-hi); }
 
