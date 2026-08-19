@@ -341,7 +341,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .comment.subtitle-red { color: var(--red); text-shadow: var(--glow-red); font-size: 15px; }
 .hl { color: var(--p-hi); text-shadow: var(--glow-hi); }
 .prose p.lead { color: var(--p-hi); text-shadow: var(--glow-hi); }
-.prose p.lead .hl { color: var(--p); text-shadow: none; }
+.prose p.lead .hl { color: var(--warn); text-shadow: none; }
 .topics-list li { color: var(--warn); }
 .topics-list .arr { color: var(--green); }
 .prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
@@ -426,6 +426,10 @@ a:focus-visible { outline: 1px solid var(--p); outline-offset: 2px; }
 @media (max-width: 720px) {
   body { font-size: 14px; }
   .term { padding: 30px 18px 110px; }
+  #statusbar { height: auto; min-height: var(--sb-h); flex-wrap: wrap; row-gap: 6px; padding: 8px 14px; }
+  .sb-host, .sb-path, .sb-sep { display: none; }
+  .sb-heron img { height: 16px; margin-right: 2px; }
+  .sb-nav { margin-left: 0; }
   .sb-nav a { padding: 0 5px; }
   .sb-nav a:not(.active) { display: none; }
   .two-col { grid-template-columns: 1fr; }
