@@ -17,6 +17,7 @@
   --warn:    #6fe0d0;
   --red:     #ff4757;
   --red-dim: #b33240;
+  --green:   #3ddc84;
   --glow:    0 0 6px rgba(88, 182, 255, 0.55);
   --glow-hi: 0 0 10px rgba(88, 182, 255, 0.85);
   --glow-red: 0 0 12px rgba(255, 71, 87, 0.65);
@@ -342,6 +343,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .prose p.lead { color: var(--p-hi); text-shadow: var(--glow-hi); }
 .prose p.lead .hl { color: var(--p); text-shadow: none; }
 .topics-list li { color: var(--warn); }
+.topics-list .arr { color: var(--green); }
 .prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
 .status-open { color: var(--warn); font-weight: 600; }
 
