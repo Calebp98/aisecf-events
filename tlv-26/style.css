@@ -163,7 +163,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .sb-nav a:hover { color: var(--p-hi); text-shadow: var(--glow-hi); }
 .sb-nav a.active { color: var(--p-hi); border-bottom: 1px solid var(--p); }
 .sb-clock { color: var(--warn); }
-.sb-heron img { height: 15px; width: auto; display: block; filter: drop-shadow(0 0 4px rgba(88,182,255,0.6)); opacity: 0.92; }
+.sb-heron img { height: 20px; width: auto; display: block; filter: drop-shadow(0 0 4px rgba(88,182,255,0.6)); opacity: 0.92; margin-right: 4px; }
 .sb-heron:hover img { opacity: 1; }
 
 /* ============================================================
@@ -322,6 +322,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
   box-shadow: 0 0 26px rgba(255,71,87,0.55);
 }
 .warn { color: var(--warn); font-size: 13px; }
+.hero-warn { margin-top: 10px; }
 
 /* key/value block */
 .kvs { display: flex; flex-direction: column; gap: 6px; }
@@ -336,6 +337,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .prose { display: flex; flex-direction: column; gap: 12px; }
 .prose p { color: var(--p); }
 .comment { color: var(--p-dim); font-size: 13px; letter-spacing: 0.06em; }
+.comment.subtitle-red { color: var(--red); text-shadow: var(--glow-red); font-size: 15px; }
 .hl { color: var(--p-hi); text-shadow: var(--glow-hi); }
 .prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
 .status-open { color: var(--warn); font-weight: 600; }
@@ -382,7 +384,7 @@ blockquote cite { display: block; color: var(--p-dim); font-style: normal; font-
 /* presented by */
 .presented { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
 .heron-mark img {
-  height: 74px; width: auto;
+  height: 52px; width: auto;
   filter: drop-shadow(0 0 12px rgba(88,182,255,0.55));
 }
 .heron-mark:hover img { filter: drop-shadow(0 0 20px rgba(88,182,255,0.9)); }
