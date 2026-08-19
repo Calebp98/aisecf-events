@@ -339,6 +339,9 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .comment { color: var(--p-dim); font-size: 13px; letter-spacing: 0.06em; }
 .comment.subtitle-red { color: var(--red); text-shadow: var(--glow-red); font-size: 15px; }
 .hl { color: var(--p-hi); text-shadow: var(--glow-hi); }
+.prose p.lead { color: var(--p-hi); text-shadow: var(--glow-hi); }
+.prose p.lead .hl { color: var(--p); text-shadow: none; }
+.topics-list li { color: var(--warn); }
 .prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
 .status-open { color: var(--warn); font-weight: 600; }
 
