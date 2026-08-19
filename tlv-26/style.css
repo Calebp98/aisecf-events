@@ -193,29 +193,36 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
    TERMINAL BODY
    ============================================================ */
 .term {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
   padding: 44px 32px 120px;
 }
+.term > section, .term > .rule { position: relative; z-index: 1; }
 .blk { margin-bottom: 42px; }
 
-.hero-grid {
-  display: flex;
-  align-items: center;
-  gap: 36px;
+/* big skyline backdrop on the right, bleeding off the edge */
+.skyline-bg {
+  position: absolute;
+  top: 150px;
+  right: -19vw;
+  width: 82%;
+  max-width: 1000px;
+  z-index: 0;
+  pointer-events: none;
 }
-.hero-copy { flex: 1 1 auto; min-width: 0; }
-.hero-art {
-  flex: 1 1 420px;
-  max-width: 460px;
-}
-.hero-art svg,
-.museum-graphic {
+.skyline-bg img {
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 22px rgba(88,182,255,0.35));
+  filter: drop-shadow(0 0 26px rgba(88,182,255,0.4));
 }
+
+.hero-grid { display: block; }
+.hero-copy { max-width: 82%; min-width: 0; }
+.hero-copy .hero-id,
+.hero-copy .hero-desc,
+.hero-copy .hero-warn { max-width: 450px; }
 .museum-caption {
   text-align: left;
   color: var(--p-dim);
@@ -223,8 +230,15 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
   letter-spacing: 0.2em;
   margin-top: 2px;
 }
-@media (max-width: 860px) {
-  .hero-art { display: none; }
+@media (max-width: 1180px) {
+  .skyline-bg { right: -12vw; width: 60%; }
+  .hero-copy .hero-id,
+  .hero-copy .hero-desc,
+  .hero-copy .hero-warn { max-width: 380px; }
+}
+@media (max-width: 900px) {
+  .skyline-bg { display: none; }
+  .hero-copy { max-width: none; }
 }
 
 .banner {
@@ -240,7 +254,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
   font-family: 'Bitcount Grid Single', var(--mono);
   font-weight: 480;
   text-transform: uppercase;
-  font-size: clamp(34px, 6.4vw, 74px);
+  font-size: clamp(34px, 6vw, 70px);
   line-height: 1.12;
   letter-spacing: 0.03em;
   margin-bottom: 4px;
@@ -313,10 +327,13 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 }
 .btn.ghost:hover {
   background: var(--p);
-  border-color: var(--p);
+  border-color: var(--p-hi);
   color: #02070d;
   text-shadow: none;
-  box-shadow: 0 0 22px rgba(88,182,255,0.6);
+  box-shadow:
+    0 0 10px rgba(88,182,255,0.95),
+    0 0 26px rgba(88,182,255,0.7),
+    0 0 54px rgba(120,200,255,0.45);
 }
 .btn.primary {
   background: rgba(255, 71, 87, 0.12);
