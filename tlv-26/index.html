@@ -1,222 +1,446 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tel Aviv Frontier AI Security Forum '26</title>
-  <meta name="description" content="Frontier AI Security Forum — Tel Aviv edition. Sunday, November 22, 2026 at the Tel Aviv Museum of Art. Presented by Heron." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Bitcount+Grid+Single:wght@400..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+/* ============================================================
+   TEL AVIV AI SECURITY FORUM — CRT phosphor console
+   Heron blue phosphor on a dark tube
+   ============================================================ */
 
-<!-- CRT overlays (fixed, non-interactive) -->
-<div class="crt-noise"></div>
-<div class="crt-scanlines"></div>
-<div class="crt-scanbeam"></div>
-<div class="crt-vignette"></div>
-<div class="crt-flicker"></div>
-<div class="crt-bezel"></div>
-<div class="crt-power"></div>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<!-- BOOT SCREEN -->
-<div id="boot-screen">
-  <div id="boot-inner">
-    <div id="boot-log"></div>
-    <div id="cursor-line"><span class="p-dim">&gt;</span>&nbsp;<span id="boot-cursor">█</span></div>
-  </div>
-</div>
+:root {
+  --bg:      #02070d;
+  --bg2:     #04101b;
+  --p:       #58b6ff;   /* phosphor */
+  --p-hi:    #d6efff;   /* bright phosphor */
+  --p-dim:   #2f6a95;   /* dim phosphor */
+  --p-deep:  #1c5687;
+  --panel:   rgba(10, 26, 44, 0.45);
+  --edge:    #163a5c;
+  --warn:    #6fe0d0;
+  --red:     #ff4757;
+  --red-dim: #b33240;
+  --green:   #3ddc84;
+  --glow:    0 0 6px rgba(88, 182, 255, 0.55);
+  --glow-hi: 0 0 10px rgba(88, 182, 255, 0.85);
+  --glow-red: 0 0 12px rgba(255, 71, 87, 0.65);
+  --mono:    'IBM Plex Mono', monospace;
+  --pixel:   'VT323', monospace;
+  --sb-h:    30px;
+}
 
-<!-- STATUS LINE (top) -->
-<header id="statusbar" class="hidden">
-  <div class="sb-left">
-    <a href="https://www.heronsec.ai/" target="_blank" class="sb-heron" title="Presented by Heron">
-      <img src="assets/heron/logo-lockup.png" alt="AI Security Forum — Heron" />
-    </a>
-    <span class="sb-host">aisf-tlv</span><span class="sb-sep">:</span><span class="sb-path">~</span><span class="sb-sep">$</span>
-    <nav class="sb-nav">
-      <a href="#main" class="sb-win active">main</a>
-      <a href="#about">about</a>
-      <a href="#cfp">cfp</a>
-      <a href="https://heron.fillout.com/t/72s5ybhkUXus" target="_blank">apply</a>
-    </nav>
-  </div>
-  <div class="sb-right">
-    <span class="sb-clock" id="clock"></span>
-  </div>
-</header>
+html { scroll-behavior: smooth; }
+body {
+  background: radial-gradient(130% 130% at 50% 40%, #04121e 0%, #02090f 62%, #010509 100%);
+  color: var(--p);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  text-shadow: var(--glow);
+  overflow-x: hidden;
+}
 
-<!-- MAIN TERMINAL SESSION -->
-<main id="site" class="hidden">
+/* ============================================================
+   CRT OVERLAYS
+   ============================================================ */
+.crt-scanlines, .crt-vignette, .crt-flicker, .crt-bezel {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+}
+.crt-scanlines {
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply; opacity: 0.55;
+}
+.crt-vignette {
+  background: radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,0.7) 100%);
+}
+.crt-flicker {
+  background: rgba(88,182,255,0.02);
+  animation: flick 6s infinite steps(1);
+}
+@keyframes flick { 0%,96%,100% { opacity: 1; } 97% { opacity: 0.72; } 98% { opacity: 1; } 99% { opacity: 0.85; } }
+/* faint tube frame */
+.crt-bezel {
+  border-radius: 26px;
+  z-index: 9100;
+  box-shadow:
+    inset 0 0 140px rgba(88,182,255,0.06),
+    inset 0 0 26px rgba(0,0,0,0.9),
+    0 0 0 8px #060a0f,
+    0 0 0 11px #02060a;
+}
 
-  <div class="rule"><span class="rule-mark">+</span><span class="rule-line"></span><span class="rule-mark">+</span></div>
+/* animated phosphor grain / static */
+.crt-noise {
+  position: fixed; inset: -60%; z-index: 8990; pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: crt-noise 0.5s steps(3) infinite;
+}
+@keyframes crt-noise {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(-3%, 2%); }
+  66%  { transform: translate(2%, -3%); }
+  100% { transform: translate(-2%, -1%); }
+}
 
-  <div class="term">
+/* slow rolling scan beam */
+.crt-scanbeam {
+  position: fixed; left: 0; right: 0; top: -140px; height: 140px;
+  z-index: 9001; pointer-events: none;
+  background: linear-gradient(to bottom,
+    transparent,
+    rgba(88,182,255,0.05) 42%,
+    rgba(214,239,255,0.11) 50%,
+    rgba(88,182,255,0.05) 58%,
+    transparent);
+  animation: crt-scanbeam 7s linear infinite;
+}
+@keyframes crt-scanbeam {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(calc(100vh + 140px)); }
+}
 
-    <!-- BANNER -->
-    <section id="main" class="blk">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1 class="banner-led">FRONTIER AI<br/>SECURITY FORUM</h1>
-          <p class="banner-sub">TEL AVIV &middot; 2026</p>
+/* one-shot power-on: a bright line that expands to fill, then fades */
+.crt-power {
+  position: fixed; inset: 0; z-index: 9200; pointer-events: none;
+  background: #eaf7ff; opacity: 0;
+}
+body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
+@keyframes crt-power {
+  0%   { opacity: 0;    clip-path: inset(49.85% 0 49.85% 0); }
+  7%   { opacity: 0.95; clip-path: inset(49.7% 0 49.7% 0); }
+  38%  { opacity: 0.55; clip-path: inset(0 0 0 0); }
+  100% { opacity: 0;    clip-path: inset(0 0 0 0); }
+}
 
-          <p class="out hero-id"><span class="typed" data-text="It's Time to Secure Intelligence"></span><span class="cur">▋</span></p>
-          <p class="out hero-desc">300 leading cybersecurity researchers, engineers, and entrepreneurs figuring out how to secure AI on the path to superintelligence.</p>
+/* ============================================================
+   BOOT SCREEN
+   ============================================================ */
+#boot-screen {
+  position: fixed; inset: 0; z-index: 9500;
+  background: #010509;
+  padding: 40px 44px;
+  display: flex; align-items: flex-start;
+  transition: opacity 0.2s ease;
+}
+#boot-screen.fade-out { opacity: 0; pointer-events: none; }
+#boot-inner { width: 100%; max-width: 760px; font-size: 14px; color: var(--p); }
+#boot-log { line-height: 1.7; }
+#boot-log .l { display: block; }
+.log-ok   { color: var(--p); }
+.log-info { color: var(--p-hi); }
+.log-warn { color: var(--warn); }
+.log-dim  { color: var(--p-dim); }
+#cursor-line { display: flex; align-items: center; margin-top: 4px; }
+#boot-cursor { animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.p-dim { color: var(--p-dim); }
 
-          <div class="actions">
-            <a href="https://heron.fillout.com/t/72s5ybhkUXus" target="_blank" class="btn primary">./apply --now</a>
-            <a href="#cfp" class="btn ghost">./submit --talk</a>
-          </div>
-          <p class="warn hero-warn">! spaces are limited - apply early to avoid disappointment!</p>
-        </div>
+/* ============================================================
+   VISIBILITY
+   ============================================================ */
+.hidden { display: none !important; }
+#site { opacity: 0; transition: opacity 0.3s ease; }
+#site.visible { opacity: 1; }
 
-        <div class="hero-art" aria-hidden="true">
-          <img src="assets/graphics/museum-skyline.png" alt="" class="museum-graphic" />
-          <p class="museum-caption">TEL AVIV MUSEUM OF ART</p>
-        </div>
-      </div>
-    </section>
+/* ============================================================
+   STATUS BAR
+   ============================================================ */
+#statusbar {
+  position: sticky; top: 0; z-index: 200;
+  height: var(--sb-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 18px;
+  background: rgba(2, 10, 18, 0.92);
+  border-bottom: 1px solid var(--edge);
+  font-size: 13px;
+  box-shadow: 0 2px 24px rgba(88,182,255,0.1);
+  backdrop-filter: blur(2px);
+}
+.sb-left, .sb-right { display: flex; align-items: center; gap: 10px; }
+.sb-host { color: var(--p-hi); }
+.sb-path { color: var(--p); }
+.sb-sep  { color: var(--p-dim); }
+.sb-nav { display: flex; gap: 4px; margin-left: 8px; }
+.sb-nav a { color: var(--p-dim); text-decoration: none; padding: 0 8px; }
+.sb-nav a:hover { color: var(--p-hi); text-shadow: var(--glow-hi); }
+.sb-nav a.active { color: var(--p-hi); border-bottom: 1px solid var(--p); }
+.sb-clock { color: var(--warn); }
+.sb-heron img { height: 20px; width: auto; display: block; filter: drop-shadow(0 0 4px rgba(88,182,255,0.6)); opacity: 0.92; margin-right: 4px; }
+.sb-heron:hover img { opacity: 1; }
 
-    <!-- EVENT.TXT -->
-    <section class="blk">
-      <div class="out kvs">
-        <div class="kv"><span class="k">location</span><span class="eq">=</span><span class="v">Tel Aviv, Israel</span></div>
-        <div class="kv"><span class="k">date</span><span class="eq">=</span><span class="v">Sunday, November 22, 2026</span></div>
-        <div class="kv"><span class="k">capacity</span><span class="eq">=</span><span class="v">~300 (application-based)</span></div>
-        <div class="kv"><span class="k">format</span><span class="eq">=</span><span class="v">9 AM – 7 PM · talks, workshops</span></div>
-        <div class="kv"><span class="k">meals</span><span class="eq">=</span><span class="v">Breakfast, lunch, light dinner (and snacks) provided</span></div>
-        <div class="kv"><span class="k">venue</span><span class="eq">=</span><span class="v"><a href="https://www.tamuseum.org.il/en/" target="_blank">Tel Aviv Museum of Art</a> · <a href="https://maps.app.goo.gl/Mg1MZFnEeJ6qTXkHA" target="_blank">map ↗</a></span></div>
-        <div class="kv"><span class="k">host</span><span class="eq">=</span><span class="v">presented by Heron</span></div>
-      </div>
-    </section>
+/* ============================================================
+   TOP / BOTTOM DOTTED RULES (corner-bracket style dividers)
+   ============================================================ */
+.rule {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 10px;
+}
+.rule-mark {
+  color: var(--p-dim);
+  font-size: 14px;
+  line-height: 1;
+  text-shadow: var(--glow);
+}
+.rule-line {
+  flex: 1;
+  height: 0;
+  border-top: 1px dotted var(--edge);
+}
 
-    <!-- ABOUT -->
-    <section id="about" class="blk">
-      <div class="out prose">
-        <p class="comment subtitle-red"># About the Forum</p>
-        <p class="lead">Frontier AI models are rapidly evolving into autonomous agents capable of multi-step, real-world execution. Recent incidents where evaluation models broke sandbox boundaries to exploit external infrastructure on Hugging Face highlight a critical reality: <span class="hl">capability scaling without matching security infrastructure creates severe vulnerabilities</span>, making frontier security essential to preventing catastrophic control failures.</p>
-        <p>The Tel Aviv Frontier AI Security Forum brings together <span class="hl">300 top cybersecurity researchers, engineers, and entrepreneurs</span> for an intimate look at what it takes to secure AI as it advances toward superintelligence. The conference centers on reducing frontier AI risks, with technical talks, hands-on workshops, 1:1 meetings, and a demo &amp; job fair.</p>
-        <p class="comment subtitle-red"># Planned topics</p>
-        <ul class="list two-col topics-list">
-          <li><span class="arr">→</span> Threat models, AI worldviews, and plans for dealing with ASI</li>
-          <li><span class="arr">→</span> AI Control and protocols for using untrusted AI</li>
-          <li><span class="arr">→</span> Security for treaties, verification, and hardware</li>
-          <li><span class="arr">→</span> Internal deployment security risks</li>
-          <li><span class="arr">→</span> SL5 - Nation-State Grade Security for Frontier AI</li>
-          <li><span class="arr">→</span> Poisoning, secret loyalties, and backdoors</li>
-        </ul>
-        <p>Also on our radar:</p>
-        <ul class="list two-col topics-list">
-          <li><span class="arr">→</span> Launching organisations</li>
-          <li><span class="arr">→</span> A beginner's guide to getting involved</li>
-          <li><span class="arr">→</span> Funding pathways for frontier AI security research and startups</li>
-        </ul>
-        <p class="comment subtitle-red"># Format</p>
-        <ul class="list">
-          <li><span class="arr">→</span> Application-based attendance, ~300 attendees</li>
-          <li><span class="arr">→</span> Keynote talks, workshops, and fireside chats</li>
-          <li><span class="arr">→</span> Parallel seminar rooms, one-on-ones, and meals</li>
-          <li><span class="arr">→</span> A full day, 9 AM – 7 PM, ending with a light dinner and a cocktail!</li>
-        </ul>
-      </div>
-    </section>
+/* ============================================================
+   TERMINAL BODY
+   ============================================================ */
+.term {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 44px 32px 120px;
+}
+.blk { margin-bottom: 42px; }
 
-    <!-- TESTIMONIALS (hidden per request — content kept for easy re-enable)
-    <section class="blk">
-      <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat testimonials.txt</p>
-      <div class="out quotes">
-        <blockquote>"The rare event where security engineers, policy people, and AI researchers are actually in the same room talking to each other."<cite>— Security Researcher, AI Lab</cite></blockquote>
-        <blockquote>"The Forum is where I've been able to connect to the beating heart of the AI Security community."<cite>— Jason Clinton, Deputy CISO @ Anthropic</cite></blockquote>
-        <blockquote>"Some of the most useful conversations I've had about AI — with both technical and policy people — started at AISF."<cite>— Kristian Ronn, CEO @ Lucid Computing</cite></blockquote>
-      </div>
-    </section>
-    -->
+.hero-grid {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.hero-copy { flex: 1 1 auto; min-width: 0; }
+.hero-art {
+  flex: 1 1 420px;
+  max-width: 460px;
+}
+.hero-art svg,
+.museum-graphic {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 22px rgba(88,182,255,0.35));
+}
+.museum-caption {
+  text-align: center;
+  color: var(--p-dim);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+}
+@media (max-width: 860px) {
+  .hero-art { display: none; }
+}
 
-    <!-- SESSIONS (hidden per request — content kept for easy re-enable)
-    <section id="sessions" class="blk">
-      <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> ls sessions/</p>
-      <div class="out">
-        <div class="tba">
-          <span class="tba-cur">_</span>
-          <p class="tba-title">sessions/ — to be announced</p>
-          <p class="tba-desc">Session details and speakers will be published closer to the event. Apply to attend to be notified when the program is released.</p>
-        </div>
-      </div>
-    </section>
-    -->
+.banner {
+  color: var(--p);
+  font-size: clamp(8px, 1.7vw, 15px);
+  line-height: 1.1;
+  white-space: pre;
+  text-shadow: var(--glow-hi);
+  overflow: hidden;
+  animation: rgb-shift 3.5s ease-in-out infinite, banner-glitch 8s linear infinite;
+}
+.banner-led {
+  font-family: 'Bitcount Grid Single', var(--mono);
+  font-weight: 480;
+  text-transform: uppercase;
+  font-size: clamp(32px, 6vw, 68px);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+  /* dot-matrix texture layered on top of the font's own letterforms,
+     in case the font's grid/dot variable axes (ELSH/ELXP) aren't
+     served by Google Fonts' CSS API for this family */
+  background-image: radial-gradient(var(--p) 36%, transparent 38%);
+  background-size: 6px 6px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-hi);
+  animation: rgb-shift 3.5s ease-in-out infinite, banner-glitch 8s linear infinite;
+}
+/* chromatic aberration — red/cyan fringing that breathes */
+@keyframes rgb-shift {
+  0%, 100% { text-shadow: var(--glow-hi), -1px 0 rgba(255,40,90,0.28),  1px 0 rgba(40,220,255,0.28); }
+  50%      { text-shadow: var(--glow-hi), -2px 0 rgba(255,40,90,0.24),  2px 0 rgba(40,220,255,0.24); }
+}
+/* rare horizontal desync glitch */
+@keyframes banner-glitch {
+  0%, 96%, 100% { transform: translate(0,0) skewX(0); }
+  96.6% { transform: translate(-2px,0) skewX(-1.2deg); }
+  97.2% { transform: translate(3px,0)  skewX(1.2deg); }
+  97.8% { transform: translate(-1px,0) skewX(0); }
+}
+.banner-sub {
+  color: var(--red);
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  margin: 2px 0 26px;
+  text-shadow: var(--glow-red);
+}
 
-    <!-- VENUE (hidden per request — content kept for easy re-enable)
-    <section id="venue" class="blk">
-      <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> cat venue.md</p>
-      <div class="out prose">
-        <p class="comment"># Venue — Tel Aviv Museum of Art</p>
-        <p>A landmark of contemporary architecture in the heart of Tel Aviv, hosting the Forum across two main floors.</p>
-        <ul class="list">
-          <li><span class="arr">→</span> Main auditorium for keynotes and plenaries</li>
-          <li><span class="arr">→</span> Two parallel seminar rooms (~45 seats each)</li>
-          <li><span class="arr">→</span> Naturally-lit foyer for mingling and coffee</li>
-          <li><span class="arr">→</span> Dedicated space for one-on-ones</li>
-          <li><span class="arr">→</span> Food and main mingling area with auditorium access</li>
-        </ul>
-      </div>
-    </section>
-    -->
+/* prompt lines */
+.cmd { font-size: 15px; margin-bottom: 8px; }
+.usr { color: var(--p-dim); }
+.pn  { color: var(--p-dim); }
+.cmd { color: var(--p-hi); }
+.out { color: var(--p); }
 
-    <!-- PAST ATTENDEES -->
-    <section id="attendees" class="blk">
-      <div class="out prose">
-        <p class="comment"># Speakers at past events included people from:</p>
-        <p>Open AI, Anthropic, RAND, Redwood, Meta, Deepmind, Irregular, NVIDIA and others.</p>
-      </div>
-    </section>
+.hero-id { font-size: 18px; color: var(--p-hi); text-shadow: var(--glow-hi); }
+.typed { color: var(--p-hi); }
+.cur { color: var(--p); animation: blink 1s step-end infinite; }
+.hero-desc { color: var(--p); margin-top: 8px; }
 
-    <!-- CFP -->
-    <section id="cfp" class="blk">
-      <div class="out prose">
-        <p class="comment"># Call for Talks &nbsp;<span class="status-open">● OPEN</span> &nbsp;·&nbsp; deadline = rolling — apply ASAP</p>
-        <p>We're looking for talks at the intersection of AI and security — offense and defense, technical and policy, research and practitioner. If you're working on something, we want to hear about it.</p>
-        <div class="actions">
-          <a href="https://heron.fillout.com/t/62iuY4DnDyus" target="_blank" class="btn">./submit --talk</a>
-          <span class="warn">! rolling deadline — spots fill fast.</span>
-        </div>
-      </div>
-    </section>
+/* actions */
+.actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.btn {
+  display: inline-block;
+  background: var(--p);
+  color: #02070d;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-shadow: none;
+  box-shadow: 0 0 16px rgba(88,182,255,0.5);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.btn:hover { background: var(--p-hi); box-shadow: 0 0 26px rgba(88,182,255,0.8); }
+.btn.ghost {
+  background: transparent;
+  color: var(--p);
+  border: 1px solid var(--p-deep);
+  box-shadow: none;
+  text-shadow: var(--glow);
+}
+.btn.ghost:hover { border-color: var(--p); color: var(--p-hi); }
+.btn.primary {
+  background: rgba(255, 71, 87, 0.12);
+  color: var(--red);
+  border: 1px solid var(--red);
+  box-shadow: 0 0 16px rgba(255,71,87,0.35);
+  text-shadow: var(--glow-red);
+}
+.btn.primary:hover {
+  background: rgba(255, 71, 87, 0.2);
+  color: #fff;
+  box-shadow: 0 0 26px rgba(255,71,87,0.55);
+}
+.warn { color: var(--warn); font-size: 13px; }
+.hero-warn { margin-top: 10px; }
 
-    <!-- APPLY -->
-    <section id="apply" class="blk">
-      <p class="cmd"><span class="usr">visitor@aisf-tlv</span><span class="pn">:~$</span> ./register</p>
-      <div class="out prose">
-        <p>Attendance is application-based. Express your interest to get early application access.</p>
-        <div class="actions">
-          <a href="mailto:hello@heronsec.ai" class="btn">./contact --team</a>
-        </div>
-      </div>
-    </section>
+/* key/value block */
+.kvs { display: flex; flex-direction: column; gap: 6px; }
+.kv { display: flex; gap: 4px; align-items: baseline; font-size: 15px; flex-wrap: wrap; }
+.k  { color: var(--p-dim); min-width: 92px; }
+.eq { color: var(--p-dim); padding: 0 4px; }
+.v  { color: var(--p-hi); }
+.kv a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
+.kv a:hover { color: #fff; text-shadow: var(--glow-hi); }
 
-    <!-- PRESENTED BY -->
-    <section class="blk">
-      <div class="out presented">
-        <a href="https://www.heronsec.ai/" target="_blank" class="heron-mark">
-          <img src="assets/heron/logo-lockup.png" alt="AI Security Forum — Heron" />
-        </a>
-        <p class="presented-note">The Tel Aviv Frontier AI Security Forum is presented by <a href="https://www.heronsec.ai/" target="_blank">Heron</a> — a gateway into the local AI security community and its programs.</p>
-      </div>
-    </section>
+/* prose */
+.prose { display: flex; flex-direction: column; gap: 12px; }
+.prose p { color: var(--p); }
+.comment { color: var(--p-dim); font-size: 13px; letter-spacing: 0.06em; }
+.comment.subtitle-red { color: var(--red); text-shadow: var(--glow-red); font-size: 15px; }
+.hl { color: var(--p-hi); text-shadow: var(--glow-hi); }
+.prose p.lead { color: var(--p-hi); text-shadow: var(--glow-hi); }
+.prose p.lead .hl { color: var(--p); text-shadow: none; }
+.topics-list li { color: var(--warn); }
+.topics-list .arr { color: var(--green); }
+.prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
+.status-open { color: var(--warn); font-weight: 600; }
 
-  </div>
+.list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.list li { display: flex; gap: 10px; color: var(--p); font-size: 15px; }
+.arr { color: var(--p); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; }
 
-  <div class="rule"><span class="rule-mark">+</span><span class="rule-line"></span><span class="rule-mark">+</span></div>
+/* quotes */
+.quotes { display: flex; flex-direction: column; gap: 14px; }
+blockquote {
+  border-left: 2px solid var(--p-deep);
+  padding-left: 14px;
+  color: var(--p);
+  font-style: italic;
+}
+blockquote cite { display: block; color: var(--p-dim); font-style: normal; font-size: 13px; margin-top: 5px; }
 
-</main>
+/* TBA */
+.tba {
+  border: 1px dashed var(--p-deep);
+  padding: 34px 30px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  box-shadow: inset 0 0 40px rgba(88,182,255,0.05);
+  max-width: 560px;
+}
+.tba-cur { font-size: 28px; color: var(--p); animation: blink 1s step-end infinite; }
+.tba-title { color: var(--p-hi); }
+.tba-desc { color: var(--p-dim); font-size: 14px; }
 
-<!-- FOOTER STATUS -->
-<footer id="footbar" class="hidden">
-  <span class="fb-mode">[NORMAL]</span>
-  <span class="fb-info">Presented by Heron · questions: <a href="mailto:hello@heronsec.ai">hello@heronsec.ai</a></span>
-</footer>
+/* orgs */
+.orgs { display: flex; flex-wrap: wrap; gap: 6px; }
+.orgs a, .orgs span {
+  font-size: 13px; padding: 3px 9px;
+  border: 1px solid var(--edge);
+  color: var(--p); text-decoration: none;
+  background: var(--panel);
+  display: inline-block;
+}
+.orgs a:hover { border-color: var(--p); color: var(--p-hi); text-shadow: var(--glow-hi); }
 
-<script src="main.js"></script>
-</body>
-</html>
+/* presented by */
+.presented { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.heron-mark img {
+  height: 52px; width: auto;
+  filter: drop-shadow(0 0 12px rgba(88,182,255,0.55));
+}
+.heron-mark:hover img { filter: drop-shadow(0 0 20px rgba(88,182,255,0.9)); }
+.presented-note { color: var(--p-dim); max-width: 620px; }
+.presented-note a { color: var(--p-hi); text-decoration: underline; }
+
+/* footer */
+#footbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; gap: 14px;
+  height: var(--sb-h);
+  padding: 0 18px;
+  background: rgba(2, 10, 18, 0.92);
+  border-top: 1px solid var(--edge);
+  font-size: 12px;
+  box-shadow: 0 -2px 24px rgba(88,182,255,0.1);
+  backdrop-filter: blur(2px);
+}
+.fb-mode { color: #02070d; background: var(--p); padding: 1px 8px; font-weight: 600; text-shadow: none; letter-spacing: 0.06em; }
+.fb-info { color: var(--p-dim); }
+.fb-info a { color: var(--p); text-decoration: none; }
+.fb-info a:hover { color: var(--p-hi); }
+
+/* scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--p-deep); }
+::selection { background: var(--p); color: #02070d; text-shadow: none; }
+a:focus-visible { outline: 1px solid var(--p); outline-offset: 2px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  body { font-size: 14px; }
+  .term { padding: 30px 18px 110px; }
+  .sb-nav a { padding: 0 5px; }
+  .sb-nav a:not(.active) { display: none; }
+  .two-col { grid-template-columns: 1fr; }
+  .k { min-width: 78px; }
+  .banner { font-size: 7px; }
+  .crt-bezel { border-radius: 0; }
+  #boot-screen { padding: 18px; }
+}
+@media (max-width: 420px) {
+  .banner { font-size: 5.5px; }
+  .actions { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-flicker, .cur, #boot-cursor, .tba-cur,
+  .crt-noise, .crt-scanbeam, .crt-power, .banner { animation: none; }
+  .crt-power { display: none; }
+}
