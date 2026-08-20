@@ -21,7 +21,7 @@
   --glow:    0 0 6px rgba(88, 182, 255, 0.55);
   --glow-hi: 0 0 10px rgba(88, 182, 255, 0.85);
   --glow-red: 0 0 12px rgba(255, 71, 87, 0.65);
-  --glow-led: 0 0 10px rgba(88,182,255,0.9), 0 0 26px rgba(88,182,255,0.6), 0 0 52px rgba(120,200,255,0.32);
+  --glow-led: 0 0 2px rgba(255,255,255,0.95), 0 0 12px rgba(120,200,255,0.95), 0 0 30px rgba(88,182,255,0.8), 0 0 64px rgba(88,182,255,0.45);
   --mono:    'IBM Plex Mono', monospace;
   --pixel:   'VT323', monospace;
   --sb-h:    30px;
@@ -256,21 +256,15 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 }
 .banner-led {
   font-family: 'Bitcount Grid Single', var(--mono);
-  font-weight: 480;
+  font-weight: 600;
   text-transform: uppercase;
-  font-size: clamp(34px, 6vw, 70px);
+  font-size: clamp(36px, 6vw, 70px);
   line-height: 1.12;
   letter-spacing: 0.03em;
   margin-bottom: 4px;
-  /* dot-matrix texture layered on top of the font's own letterforms,
-     in case the font's grid/dot variable axes (ELSH/ELXP) aren't
-     served by Google Fonts' CSS API for this family */
-  background-image: radial-gradient(#e2f4ff 34%, rgba(120,205,255,0.95) 44%, transparent 46%);
-  background-size: 6px 6px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  /* solid fill + layered neon: the LED font carries the terminal character on
+     its own, so the letterforms stay unbroken and legible at phone sizes */
+  color: #eaf7ff;
   text-shadow: var(--glow-led);
   animation: rgb-shift 3.5s ease-in-out infinite, banner-glitch 8s linear infinite;
 }
