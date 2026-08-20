@@ -165,8 +165,11 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .sb-nav a:hover { color: var(--p-hi); text-shadow: var(--glow-hi); }
 .sb-nav a.active { color: var(--p-hi); border-bottom: 1px solid var(--p); }
 .sb-clock { color: var(--warn); }
-.sb-heron img { height: 20px; width: auto; display: block; filter: drop-shadow(0 0 4px rgba(88,182,255,0.6)); opacity: 0.92; margin-right: 4px; }
-.sb-heron:hover img { opacity: 1; }
+.sb-logos { display: flex; align-items: center; gap: 12px; margin-right: 6px; }
+.sb-heron img { width: auto; display: block; filter: drop-shadow(0 0 4px rgba(88,182,255,0.6)); opacity: 0.92; }
+.sb-logos a:first-child img { height: 20px; }   /* AISF mark (taller, two-line) */
+.sb-logos a:last-child img  { height: 13px; }   /* Heron wordmark */
+.sb-heron:hover img { opacity: 1; filter: drop-shadow(0 0 8px rgba(88,182,255,0.95)); }
 
 /* ============================================================
    TOP / BOTTOM DOTTED RULES (corner-bracket style dividers)
@@ -202,12 +205,13 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .blk { margin-bottom: 42px; }
 
 /* big skyline backdrop on the right, bleeding off the edge */
+/* left edge and the text column are both percentages of .term, so they scale
+   together and can never collide, whatever the viewport width */
 .skyline-bg {
   position: absolute;
   top: 150px;
+  left: 58%;
   right: -19vw;
-  width: 82%;
-  max-width: 1000px;
   z-index: 0;
   pointer-events: none;
 }
@@ -216,13 +220,16 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
   width: 100%;
   height: auto;
   filter: drop-shadow(0 0 26px rgba(88,182,255,0.4));
+  /* soften the hard bottom edge where the reflection is cropped */
+  -webkit-mask-image: linear-gradient(to bottom, #000 74%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, #000 74%, rgba(0,0,0,0) 100%);
 }
 
 .hero-grid { display: block; }
 .hero-copy { max-width: 82%; min-width: 0; }
 .hero-copy .hero-id,
 .hero-copy .hero-desc,
-.hero-copy .hero-warn { max-width: 450px; }
+.hero-copy .hero-warn { max-width: 54%; }
 .museum-caption {
   text-align: left;
   color: var(--p-dim);
@@ -230,15 +237,12 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
   letter-spacing: 0.2em;
   margin-top: 2px;
 }
-@media (max-width: 1180px) {
-  .skyline-bg { right: -12vw; width: 60%; }
-  .hero-copy .hero-id,
-  .hero-copy .hero-desc,
-  .hero-copy .hero-warn { max-width: 380px; }
-}
 @media (max-width: 900px) {
   .skyline-bg { display: none; }
   .hero-copy { max-width: none; }
+  .hero-copy .hero-id,
+  .hero-copy .hero-desc,
+  .hero-copy .hero-warn { max-width: none; }
 }
 
 .banner {
@@ -416,11 +420,11 @@ blockquote cite { display: block; color: var(--p-dim); font-style: normal; font-
 
 /* presented by */
 .presented { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
-.heron-mark img {
-  height: 52px; width: auto;
-  filter: drop-shadow(0 0 12px rgba(88,182,255,0.55));
-}
-.heron-mark:hover img { filter: drop-shadow(0 0 20px rgba(88,182,255,0.9)); }
+.mark-row { display: flex; align-items: center; gap: 34px; flex-wrap: wrap; }
+.heron-mark img { width: auto; filter: drop-shadow(0 0 12px rgba(88,182,255,0.55)); }
+.mark-row a:first-child img { height: 58px; }   /* AISF mark */
+.mark-row a:last-child img  { height: 38px; }   /* Heron wordmark */
+.heron-mark:hover img { filter: drop-shadow(0 0 20px rgba(88,182,255,0.95)); }
 .presented-note { color: var(--p-dim); max-width: 620px; }
 .presented-note a { color: var(--p-hi); text-decoration: underline; }
 
@@ -465,6 +469,15 @@ a:focus-visible { outline: 1px solid var(--p); outline-offset: 2px; }
   .banner { font-size: 7px; }
   .crt-bezel { border-radius: 0; }
   #boot-screen { padding: 18px; }
+}
+/* narrow screens: key/value rows stack predictably instead of some staying
+   inline and some wrapping mid-row (which read as "jumping" lines) */
+@media (max-width: 620px) {
+  .kv { display: block; }
+  .kv .eq { display: none; }
+  .kv .k { display: block; min-width: 0; margin-bottom: 1px; }
+  .kv .v { display: block; }
+  .kvs { gap: 12px; }
 }
 @media (max-width: 420px) {
   .banner { font-size: 5.5px; }
