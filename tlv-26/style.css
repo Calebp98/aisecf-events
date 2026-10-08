@@ -483,3 +483,14 @@ a:focus-visible { outline: 1px solid var(--p); outline-offset: 2px; }
   .crt-noise, .crt-scanbeam, .crt-power, .banner { animation: none; }
   .crt-power { display: none; }
 }
+
+/* ============================================================
+   SPEAKERS GRID
+   ============================================================ */
+.speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; margin-top: 16px; }
+.spk { display: flex; flex-direction: column; gap: 4px; }
+.spk img { width: 100%; height: auto; aspect-ratio: 188 / 185; object-fit: cover; display: block; border: 1px solid var(--edge); background: var(--bg2); margin-bottom: 6px; transition: border-color .2s, box-shadow .2s; }
+.spk:hover img { border-color: var(--p); box-shadow: 0 0 14px rgba(88,182,255,0.45); }
+.spk-name { color: var(--p-hi); font-size: 15px; text-shadow: var(--glow-hi); }
+.spk-role { color: var(--p-dim); font-size: 12.5px; line-height: 1.4; }
+@media (max-width: 420px) { .speakers { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; } .spk-name { font-size: 14px; } }
