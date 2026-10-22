@@ -372,6 +372,7 @@ body.power-on .crt-power { animation: crt-power 0.62s ease-out forwards; }
 .prose a { color: var(--p-hi); text-decoration: underline; text-underline-offset: 3px; }
 .prose a.btn { text-decoration: none; }
 .status-open { color: var(--warn); font-weight: 600; }
+.status-closed { color: var(--red-dim); font-weight: 600; }
 
 .list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .list li { display: flex; gap: 10px; color: var(--p); font-size: 15px; }
